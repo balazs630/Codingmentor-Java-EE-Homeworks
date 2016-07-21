@@ -7,16 +7,14 @@ import hu.oktatas.java.ee.webshop.constraint.Name;
 
 public class NameValidator implements ConstraintValidator<Name, UserDTO> {
 
-    public boolean isFirstAndLastNameAdded(String firstName, String lastName){
-        if (firstName != null && lastName == null) {
-            return false;
-        }
-        if (lastName != null && firstName == null)
-            return false;
-        else
-            return true;
+    public boolean isFirstAndLastNameAdded(String firstName, String lastName) {
+        return firstName != null && lastName != null;
     }
-    
+
+    public boolean isFirstAndLastNameNull(String firstName, String lastName) {
+        return firstName == null && lastName == null;
+    }
+
     @Override
     public void initialize(Name constraintAnnotation) {
         // Empty
@@ -24,6 +22,7 @@ public class NameValidator implements ConstraintValidator<Name, UserDTO> {
 
     @Override
     public boolean isValid(UserDTO user, ConstraintValidatorContext context) {
-         return isFirstAndLastNameAdded(user.getFirstName(), user.getLastName());
+        return isFirstAndLastNameAdded(user.getFirstName(), user.getLastName())
+                || isFirstAndLastNameNull(user.getFirstName(), user.getLastName());
     }
 }
