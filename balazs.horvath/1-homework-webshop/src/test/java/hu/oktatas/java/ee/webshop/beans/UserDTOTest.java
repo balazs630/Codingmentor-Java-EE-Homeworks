@@ -34,7 +34,7 @@ public class UserDTOTest {
 
     @Before
     public void setTestDates() {
-        dateOfBirthValid.add(Calendar.YEAR, -15); //present time -15 years
+        dateOfBirthValid.add(Calendar.YEAR, -10); //present time -10 years
         dateOfBirthInvalid.add(Calendar.DATE, + 1); //present time +1 day
         regTime.add(Calendar.SECOND, -1); //present time -1 sec (to ensure it's in the past)
     }
