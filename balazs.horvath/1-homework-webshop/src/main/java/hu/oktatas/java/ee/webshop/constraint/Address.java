@@ -21,11 +21,4 @@ public @interface Address {
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
-
-    @Target(FIELD)
-    @Retention(RUNTIME)
-    @interface List {
-
-        Address[] value();
-    }
 }

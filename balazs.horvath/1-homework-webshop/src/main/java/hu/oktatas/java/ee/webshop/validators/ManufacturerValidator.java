@@ -15,12 +15,12 @@ public class ManufacturerValidator implements ConstraintValidator<Manufacturer, 
     }
 
     @Override
-    public boolean isValid(MobileType value, ConstraintValidatorContext cvc) {
-        if (value.getManufacturer().equals(ManufacturerType.APPLE)) {
-            return value.getColor().equals(Color.BLACK) || value.getColor().equals(Color.WHITE);
+    public boolean isValid(MobileType mobile, ConstraintValidatorContext cvc) {
+        if (mobile.getManufacturer().equals(ManufacturerType.APPLE)) {
+            return mobile.getColor().equals(Color.BLACK) || mobile.getColor().equals(Color.WHITE);
         }
-        if (value.getManufacturer().equals(ManufacturerType.SAMSUNG)) {
-            return !value.getColor().equals(Color.GREEN);
+        if (mobile.getManufacturer().equals(ManufacturerType.SAMSUNG)) {
+            return !mobile.getColor().equals(Color.GREEN);
         }
         return true;
     }

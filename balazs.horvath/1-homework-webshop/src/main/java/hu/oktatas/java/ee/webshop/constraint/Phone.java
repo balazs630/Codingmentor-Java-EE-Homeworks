@@ -23,11 +23,4 @@ public @interface Phone {
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
-
-    @Target(FIELD)
-    @Retention(RUNTIME)
-    @interface List {
-
-        Phone[] value();
-    }
 }

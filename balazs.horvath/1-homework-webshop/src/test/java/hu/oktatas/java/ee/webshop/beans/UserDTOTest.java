@@ -35,7 +35,7 @@ public class UserDTOTest {
     @Before
     public void setTestDates() {
         dateOfBirthValid.add(Calendar.YEAR, -10); //present time -10 years
-        dateOfBirthInvalid.add(Calendar.DATE, + 1); //present time +1 day
+        dateOfBirthInvalid.add(Calendar.DATE, +1); //present time +1 day
         regTime.add(Calendar.SECOND, -1); //present time -1 sec (to ensure it's in the past)
     }
 
@@ -51,8 +51,8 @@ public class UserDTOTest {
         UserDTO user = new UserDTO("testuser", "fakepass", "user@domain.com", regTime);
         Set<ConstraintViolation<UserDTO>> violations = validator.validate(user);
         Assert.assertEquals(1, violations.size());
-        Assert.assertEquals("fakepass", violations.iterator().next().getInvalidValue());
-        Assert.assertEquals("{Password.message}", violations.iterator().next().getMessageTemplate());
+        ConstraintViolation<UserDTO> constViolation = violations.iterator().next();
+        Assert.assertEquals("fakepass", constViolation.getInvalidValue());
     }
 
     @Test
@@ -70,8 +70,8 @@ public class UserDTOTest {
         user.setFirstName("Teszt");
         Set<ConstraintViolation<UserDTO>> violations = validator.validate(user);
         Assert.assertEquals(1, violations.size());
-        Assert.assertEquals(user, violations.iterator().next().getRootBean());
-        Assert.assertEquals("{Name.message}", violations.iterator().next().getMessageTemplate());
+        ConstraintViolation<UserDTO> constViolation = violations.iterator().next();
+        Assert.assertEquals(user, constViolation.getInvalidValue());
     }
 
     @Test
@@ -88,8 +88,8 @@ public class UserDTOTest {
         user.setAddress("Budapest Nyugati tér 1.");
         Set<ConstraintViolation<UserDTO>> violations = validator.validate(user);
         Assert.assertEquals(1, violations.size());
-        Assert.assertEquals("Budapest Nyugati tér 1.", violations.iterator().next().getInvalidValue());
-        Assert.assertEquals("{Address.message}", violations.iterator().next().getMessageTemplate());
+        ConstraintViolation<UserDTO> constViolation = violations.iterator().next();
+        Assert.assertEquals("Budapest Nyugati tér 1.", constViolation.getInvalidValue());
     }
 
     @Test
@@ -106,8 +106,8 @@ public class UserDTOTest {
         user.setPhone("+363042084555");
         Set<ConstraintViolation<UserDTO>> violations = validator.validate(user);
         Assert.assertEquals(1, violations.size());
-        Assert.assertEquals("+363042084555", violations.iterator().next().getInvalidValue());
-        Assert.assertEquals("{Phone.message}", violations.iterator().next().getMessageTemplate());
+        ConstraintViolation<UserDTO> constViolation = violations.iterator().next();
+        Assert.assertEquals("+363042084555", constViolation.getInvalidValue());
     }
 
     @Test
@@ -122,8 +122,8 @@ public class UserDTOTest {
         UserDTO user = new UserDTO("testuser", "Passs1234", "userdomain.com", regTime);
         Set<ConstraintViolation<UserDTO>> violations = validator.validate(user);
         Assert.assertEquals(1, violations.size());
-        Assert.assertEquals("userdomain.com", violations.iterator().next().getInvalidValue());
-        Assert.assertEquals("{Email.message}", violations.iterator().next().getMessageTemplate());
+        ConstraintViolation<UserDTO> constViolation = violations.iterator().next();
+        Assert.assertEquals("userdomain.com", constViolation.getInvalidValue());
     }
 
     @Test
@@ -131,8 +131,8 @@ public class UserDTOTest {
         UserDTO user = new UserDTO("testuser", "Passs1234", "user@domaincom", regTime);
         Set<ConstraintViolation<UserDTO>> violations = validator.validate(user);
         Assert.assertEquals(1, violations.size());
-        Assert.assertEquals("user@domaincom", violations.iterator().next().getInvalidValue());
-        Assert.assertEquals("{Email.message}", violations.iterator().next().getMessageTemplate());
+        ConstraintViolation<UserDTO> constViolation = violations.iterator().next();
+        Assert.assertEquals("user@domaincom", constViolation.getInvalidValue());
     }
 
     @Test
@@ -149,7 +149,7 @@ public class UserDTOTest {
         user.setDateOfBirth(dateOfBirthInvalid);
         Set<ConstraintViolation<UserDTO>> violations = validator.validate(user);
         Assert.assertEquals(1, violations.size());
-        Assert.assertEquals(user, violations.iterator().next().getRootBean());
-        Assert.assertEquals("{DateOfBirth.message}", violations.iterator().next().getMessageTemplate());
+        ConstraintViolation<UserDTO> constViolation = violations.iterator().next();
+        Assert.assertEquals(user, constViolation.getInvalidValue());
     }
 }

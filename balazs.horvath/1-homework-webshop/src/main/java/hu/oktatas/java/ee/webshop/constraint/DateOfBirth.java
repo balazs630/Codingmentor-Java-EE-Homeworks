@@ -18,11 +18,4 @@ public @interface DateOfBirth {
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
-
-    @Target(TYPE)
-    @Retention(RUNTIME)
-    @interface List {
-
-        DateOfBirth[] value();
-    }
 }

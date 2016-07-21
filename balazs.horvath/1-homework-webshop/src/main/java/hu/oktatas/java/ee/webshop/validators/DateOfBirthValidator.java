@@ -13,9 +13,9 @@ public class DateOfBirthValidator implements ConstraintValidator<DateOfBirth, Us
     }
 
     @Override
-    public boolean isValid(UserDTO value, ConstraintValidatorContext cvc) {
-        if (value.getDateOfBirth() != null) {
-            return value.getDateOfBirth().before(value.getRegistrationDate());
+    public boolean isValid(UserDTO user, ConstraintValidatorContext cvc) {
+        if (user.getDateOfBirth() != null) {
+            return user.getDateOfBirth().before(user.getRegistrationDate());
         }
         return true;
     }

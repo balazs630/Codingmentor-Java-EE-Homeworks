@@ -18,11 +18,4 @@ public @interface Name {
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
-
-    @Target(TYPE)
-    @Retention(RUNTIME)
-    @interface List {
-
-        Name[] value();
-    }
 }
