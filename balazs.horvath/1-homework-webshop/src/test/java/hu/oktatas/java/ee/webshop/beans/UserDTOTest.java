@@ -48,9 +48,8 @@ public class UserDTOTest {
 
     @Test
     public void InvalidPassword() {
-        UserDTO user = new UserDTO("testuser", "fakepass", "user@domain.com", regTime);
-        String invalidPassword = "fakepassword";
-        user.setPassword(invalidPassword);
+        String invalidPassword = "fakepass";
+        UserDTO user = new UserDTO("testuser", invalidPassword, "user@domain.com", regTime);
         Set<ConstraintViolation<UserDTO>> violations = validator.validate(user);
         Assert.assertEquals(1, violations.size());
         Assert.assertEquals(invalidPassword, violations.iterator().next().getInvalidValue());
@@ -84,9 +83,8 @@ public class UserDTOTest {
 
     @Test
     public void InvalidAddress() {
-        UserDTO user = new UserDTO("testuser", "Passs1234", "user@domain.com", regTime);
         String invalidAddress = "Budapest Nyugati tér 1.";
-        user.setAddress(invalidAddress);
+        UserDTO user = new UserDTO("testuser", "Passs1234", invalidAddress, "user@domain.com", regTime);
         Set<ConstraintViolation<UserDTO>> violations = validator.validate(user);
         Assert.assertEquals(1, violations.size());
         Assert.assertEquals(invalidAddress, violations.iterator().next().getInvalidValue());
@@ -102,9 +100,8 @@ public class UserDTOTest {
 
     @Test
     public void InvalidPhone() {
-        UserDTO user = new UserDTO("testuser", "Passs1234", "user@domain.com", regTime);
         String invalidPhone = "+363042084555";
-        user.setPhone(invalidPhone);
+        UserDTO user = new UserDTO("testuser", "Passs1234", invalidPhone, "user@domain.com", regTime);
         Set<ConstraintViolation<UserDTO>> violations = validator.validate(user);
         Assert.assertEquals(1, violations.size());
         Assert.assertEquals(invalidPhone, violations.iterator().next().getInvalidValue());

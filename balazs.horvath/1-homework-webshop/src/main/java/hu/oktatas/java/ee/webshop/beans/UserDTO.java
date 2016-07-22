@@ -47,9 +47,26 @@ public class UserDTO {
 
     private boolean admin;
 
-    public UserDTO(String userName, String password, String email, Calendar registrationDate) {
+    public UserDTO(String username, String password, String email, Calendar registrationDate) {
+        this.userName = username;
+        this.password = password;
+        this.email = email;
+        this.registrationDate = registrationDate;
+    }
+
+    public UserDTO(String userName, String password, String address, String email, Calendar registrationDate) {
         this.userName = userName;
         this.password = password;
+        this.address = address;
+        this.email = email;
+        this.registrationDate = registrationDate;
+    }
+
+    public UserDTO(String userName, String password, String address, String phone, String email, Calendar registrationDate) {
+        this.userName = userName;
+        this.password = password;
+        this.address = address;
+        this.phone = phone;
         this.email = email;
         this.registrationDate = registrationDate;
     }
