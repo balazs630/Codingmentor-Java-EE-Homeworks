@@ -1,7 +1,6 @@
 package hu.oktatas.java.ee.webshop.beans;
 
 import hu.oktatas.java.ee.webshop.constraint.Manufacturer;
-import java.util.UUID;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -11,7 +10,7 @@ public class MobileType {
 
     @NotNull
     @Size(min = 36, max = 36)
-    private final String id = UUID.randomUUID().toString();
+    private String id;
     @NotNull
     private ManufacturerType manufacturer;
     @NotNull
@@ -21,20 +20,24 @@ public class MobileType {
     @Min(1)
     private int price;
     @NotNull
-    private Currency coin;
+    private Currency currency;
     @NotNull
     private Color color;
 
-    public MobileType(ManufacturerType manufacturer, String type, int price, Currency coin, Color color) {
+    public MobileType(ManufacturerType manufacturer, String type, int price, Currency currency, Color color) {
         this.manufacturer = manufacturer;
         this.type = type;
         this.price = price;
-        this.coin = coin;
+        this.currency = currency;
         this.color = color;
     }
 
     public String getId() {
         return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public ManufacturerType getManufacturer() {
@@ -61,12 +64,12 @@ public class MobileType {
         this.price = price;
     }
 
-    public Currency getCoin() {
-        return coin;
+    public Currency getCurrency() {
+        return currency;
     }
 
-    public void setCoin(Currency coin) {
-        this.coin = coin;
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
     }
 
     public Color getColor() {
