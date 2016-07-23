@@ -22,7 +22,7 @@ public class UserDB {
     }
 
     public boolean authenticate(String username, String password) {
-        if (userDB.containsKey(username)){
+        if (userDB.containsKey(username)) {
             return userDB.get(username).getPassword().equals(password);
         }
         return false;

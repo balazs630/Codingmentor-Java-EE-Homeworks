@@ -1,9 +1,9 @@
 [
    {
-      "username":"testuser1",
+      "userName":"testuser1",
       "password":"Pass1234",
-      "firstname":"FirstName",
-      "lastname":"LastName",
+      "firstName":"FirstName",
+      "lastName":"LastName",
       "address":"1066 Budapest, Nyugati tér 1.",
       "phone":"+36302001001",
       "email":"user1@domain.com",
@@ -12,11 +12,12 @@
       "dateOfBirth":null,
       "admin":false
    },
-   {
-      "username":"testuser2",
+   
+    {
+      "userName":"testuser2",
       "password":"PassWord.1234",
-      "firstname":"FirstName",
-      "lastname":"LastName",
+      "firstName":"FirstName",
+      "lastName":"LastName",
       "address":"1066 Budapest, Nyugati tér 2.",
       "phone":"06302001002",
       "email":"user2@domain.com",
@@ -26,10 +27,10 @@
       "admin":false
    },
    {
-      "username":"testuser3",
+      "userName":"testuser3",
       "password":"PassWord.1234",
-      "firstname":"FirstName",
-      "lastname":"LastName",
+      "firstName":"FirstName",
+      "lastName":"LastName",
       "address":"1066 Budapest, Nyugati tér 3.",
       "phone":"+36302001003",
       "email":"user3@domain.com",
@@ -39,10 +40,10 @@
       "admin":false
    },
    {
-      "username":"testuser4",
+      "userName":"testuser4",
       "password":"PassWord.1234",
-      "firstname":"FirstName",
-      "lastname":"LastName",
+      "firstName":"FirstName",
+      "lastName":"LastName",
       "address":"1066 Budapest, Nyugati tér 4.",
       "phone":"06302001004",
       "email":"user4@domain.com",
@@ -52,10 +53,10 @@
       "admin":false
    },
    {
-      "username":"testuser5",
+      "userName":"testuser5",
       "password":"PassWord.1234",
-      "firstname":"FirstName",
-      "lastname":"LastName",
+      "firstName":"FirstName",
+      "lastName":"LastName",
       "address":"1066 Budapest, Nyugati tér 5.",
       "phone":"+36302001005",
       "email":"user5@domain.com",
@@ -65,10 +66,10 @@
       "admin":false
    },
    {
-      "username":"testuser6",
+      "userName":"testuser6",
       "password":"PassWord.1234",
-      "firstname":"FirstName",
-      "lastname":"LastName",
+      "firstName":"FirstName",
+      "lastName":"LastName",
       "address":"1066 Budapest, Nyugati tér 6.",
       "phone":"06302001006",
       "email":"user6@domain.com",
@@ -78,10 +79,10 @@
       "admin":false
    },
    {
-      "username":"testuser7",
+      "userName":"testuser7",
       "password":"PassWord.1234",
-      "firstname":"FirstName",
-      "lastname":"LastName",
+      "firstName":"FirstName",
+      "lastName":"LastName",
       "address":"1066 Budapest, Nyugati tér 7.",
       "phone":"+36302001007",
       "email":"user7@domain.com",
@@ -91,10 +92,10 @@
       "admin":false
    },
    {
-      "username":"testuser8",
+      "userName":"testuser8",
       "password":"PassWord.1234",
-      "firstname":"FirstName",
-      "lastname":"LastName",
+      "firstName":"FirstName",
+      "lastName":"LastName",
       "address":"1066 Budapest, Nyugati tér 8.",
       "phone":"06302001008",
       "email":"user8@domain.com",
@@ -104,10 +105,10 @@
       "admin":false
    },
    {
-      "username":"testuser9",
+      "userName":"testuser9",
       "password":"PassWord=1234",
-      "firstname":"FirstName",
-      "lastname":"LastName",
+      "firstName":"FirstName",
+      "lastName":"LastName",
       "address":"1066 Budapest, Nyugati tér 9.",
       "phone":"+36302001009",
       "email":"user9@domain.com",
@@ -117,10 +118,10 @@
       "admin":true
    },
    {
-      "username":"testuser10",
+      "userName":"testuser10",
       "password":"PassWord.1234",
-      "firstname":"FirstName",
-      "lastname":"LastName",
+      "firstName":"FirstName",
+      "lastName":"LastName",
       "address":"1066 Budapest, Nyugati tér 10.",
       "phone":"06302001010",
       "email":"user10@domain.com",

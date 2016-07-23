@@ -47,8 +47,11 @@ public class UserDTO {
 
     private boolean admin;
 
-    public UserDTO(String username, String password, String email, Calendar registrationDate) {
-        this.userName = username;
+    public UserDTO() {
+    }
+
+    public UserDTO(String userName, String password, String email, Calendar registrationDate) {
+        this.userName = userName;
         this.password = password;
         this.email = email;
         this.registrationDate = registrationDate;
@@ -69,6 +72,20 @@ public class UserDTO {
         this.phone = phone;
         this.email = email;
         this.registrationDate = registrationDate;
+    }
+
+    public UserDTO(String userName, String password, String firstName, String lastName, String address, String phone, String email, Sex sex, Calendar registrationDate, Calendar dateOfBirth, boolean admin) {
+        this.userName = userName;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+        this.sex = sex;
+        this.registrationDate = registrationDate;
+        this.dateOfBirth = dateOfBirth;
+        this.admin = admin;
     }
 
     public String getUserName() {
