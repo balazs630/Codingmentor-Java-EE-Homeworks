@@ -7,25 +7,51 @@ import java.util.Calendar;
 
 public class UserDB {
 
-    private final Map<String, UserDTO> userDB = new HashMap<>();
+    private UserDB() {
+    }
+
+    public static final UserDB INSTANCE = new UserDB();
+
+    private final Map<String, UserDTO> userDataBase = new HashMap<>();
+
+    public Map<String, UserDTO> getUserDataBase() {
+        return userDataBase;
+    }
+
+    public static UserDB getINSTANCE() {
+        return INSTANCE;
+    }
+
+    public Calendar getRegTime() {
+        return regTime;
+    }
     private final Calendar regTime = Calendar.getInstance();
 
     public UserDTO registrate(UserDTO user) {
         String userName = user.getUserName();
         user.setRegistrationDate(regTime);
-        userDB.put(userName, user);
+        userDataBase.put(userName, user);
         return user;
     }
 
     public UserDTO getUser(String username) {
-        return userDB.get(username);
+        return userDataBase.get(username);
     }
 
     public boolean authenticate(String username, String password) {
-        if (userDB.containsKey(username)) {
-            return userDB.get(username).getPassword().equals(password);
+        if (userDataBase.containsKey(username)) {
+            return userDataBase.get(username).getPassword().equals(password);
         }
         return false;
     }
-
+    
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("\nUser Database:\n");
+        for (UserDTO user : userDataBase.values()) {
+            stringBuilder.append(user);
+        }
+        return stringBuilder.toString();
+    }
 }

@@ -8,8 +8,6 @@ import javax.validation.constraints.Size;
 @Manufacturer
 public class MobileType {
 
-    
-
     //@NotNull
     @Size(min = 36, max = 36)
     private String id;
@@ -32,6 +30,7 @@ public class MobileType {
     private Color color;
     
     public MobileType(){
+        //Default constructor
     }
 
     public MobileType(ManufacturerType manufacturer, String type, int price, Currency currency, Color color) {
