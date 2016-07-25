@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import hu.oktatas.java.ee.webshop.db.MobileDB;
 import hu.oktatas.java.ee.webshop.db.UserDB;
+import hu.oktatas.java.ee.webshop.db.exception.UsernameAlreadyTakenException;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
@@ -20,7 +21,7 @@ public class Main {
     private Main() {
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, UsernameAlreadyTakenException {
 
         List<UserDTO> users = MAPPER.readValue(Main.class.getClassLoader().getResource("json/users.json"),
                 new TypeReference<List<UserDTO>>() {

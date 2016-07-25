@@ -1,5 +1,7 @@
 package hu.oktatas.java.ee.webshop.db;
 
+import hu.oktatas.java.ee.webshop.db.exception.UsernameAlreadyTakenException;
+import hu.oktatas.java.ee.webshop.db.exception.UsernameNotExistException;
 import hu.oktatas.java.ee.webshop.beans.UserDTO;
 import java.util.Map;
 import java.util.HashMap;
@@ -22,15 +24,26 @@ public class UserDB {
         return regTime;
     }
 
-    public UserDTO registrate(UserDTO user) {
+    public UserDTO registrate(UserDTO user) throws UsernameAlreadyTakenException {
+        if (userDataBase.containsKey(user.getUserName())) {
+            throw new UsernameAlreadyTakenException(
+                    "Username is Already Taken, Choose Another One!");
+        }
+
         String userName = user.getUserName();
         user.setRegistrationDate(regTime);
         userDataBase.put(userName, user);
         return user;
     }
 
-    public UserDTO getUser(String username) {
-        return userDataBase.get(username);
+    public UserDTO getUser(String username) throws UsernameNotExistException {
+        if (userDataBase.containsKey(username)) {
+            return userDataBase.get(username);
+        }
+        else{
+            throw new UsernameNotExistException(
+                    "Username is Not Exist in the Database!");
+        }
     }
 
     public boolean authenticate(String username, String password) {
