@@ -22,15 +22,24 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        MAPPER.readValue(Main.class.getClassLoader().getResource("json/users.json"),
+        List<UserDTO> users = MAPPER.readValue(Main.class.getClassLoader().getResource("json/users.json"),
                 new TypeReference<List<UserDTO>>() {
         });
 
-        MAPPER.readValue(Main.class.getClassLoader().getResource("json/mobiles.json"),
+        users.stream().forEach((user) -> {
+            USERDB.registrate(user);
+        });
+
+         List<MobileType> mobiles = MAPPER.readValue(Main.class.getClassLoader().getResource("json/mobiles.json"),
                 new TypeReference<List<MobileType>>() {
+        });
+
+         mobiles.stream().forEach((mobile) -> {
+             MOBILEDB.addNewMobileType(mobile);
         });
 
         LOGGER.log(Level.INFO, "{0}", USERDB.toString());
         LOGGER.log(Level.INFO, "{0}", MOBILEDB.toString());
+        
     }
 }

@@ -1,5 +1,7 @@
 package hu.oktatas.java.ee.webshop.db;
 
-public class UserDBTest {
+import hu.oktatas.java.ee.webshop.beans.UserDTO;
 
+public class UserDBTest {
+    
 }

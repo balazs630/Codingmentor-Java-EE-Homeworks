@@ -1,6 +1,6 @@
 [
    {
-      "id":null,
+      "id":"c2e1476d-4896-41eb-a888-d048fc20511c",
       "manufacturer":"APPLE",
       "type":"iPhone 6s",
       "price":1800,
@@ -8,7 +8,7 @@
       "color":"WHITE"
    },
    {
-      "id":null,
+      "id":"8e725c03-1d29-4c8a-89fe-0fd11c8ffb84",
       "manufacturer":"APPLE",
       "type":"iPhone 4s",
       "price":400,
@@ -16,7 +16,7 @@
       "color":"BLACK"
    },
    {
-      "id":null,
+      "id":"ba7c95e9-b506-4021-b391-fd1b681a2f2d",
       "manufacturer":"SAMSUNG",
       "type":"Galaxy S",
       "price":500,
@@ -24,7 +24,7 @@
       "color":"RED"
    },
    {
-      "id":null,
+      "id":"ba7c95e9-b506-4021-b391-fd1b681a2f2d",
       "manufacturer":"SAMSUNG",
       "type":"Galaxy S5",
       "price":180,
@@ -32,7 +32,7 @@
       "color":"BLACK"
    },
    {
-      "id":null,
+      "id":"4003480b-85d4-46ec-936c-2dfabe53e6cc",
       "manufacturer":"HTC",
       "type":"M8",
       "price":600,
@@ -40,7 +40,7 @@
       "color":"RED"
    },
    {
-      "id":null,
+      "id":"a6e9dd0f-9a88-4ccf-ac26-2642e0d69f0d",
       "manufacturer":"HTC",
       "type":"M10",
       "price":1200,
@@ -48,7 +48,7 @@
       "color":"PURPLE"
    },
    {
-      "id":null,
+      "id":"d94cc011-3cb7-4419-abf2-6e049b0d56db",
       "manufacturer":"HTC",
       "type":"M9",
       "price":1000,
@@ -56,7 +56,7 @@
       "color":"BLUE"
    },
    {
-      "id":null,
+      "id":"8ea29188-c205-4ce8-b42c-e87635c0ae08",
       "manufacturer":"ONEPLUS",
       "type":"X",
       "price":100,
@@ -64,7 +64,7 @@
       "color":"BLACK"
    },
    {
-      "id":null,
+      "id":"2676831d-d50e-4934-917f-bfe848a0107a",
       "manufacturer":"ONEPLUS",
       "type":"1",
       "price":200,
@@ -72,7 +72,7 @@
       "color":"WHITE"
    },
    {
-      "id":null,
+      "id":"195bcab8-31fa-4455-9db7-ce715f122892",
       "manufacturer":"ONEPLUS",
       "type":"2",
       "price":400,

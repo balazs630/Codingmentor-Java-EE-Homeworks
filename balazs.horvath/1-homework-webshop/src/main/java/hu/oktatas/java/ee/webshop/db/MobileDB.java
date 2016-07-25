@@ -7,12 +7,12 @@ import java.util.Map;
 
 public class MobileDB {
 
-    private MobileDB() {
-    }
-
     public static final MobileDB INSTANCE = new MobileDB();
 
     private final Map<MobileType, Integer> reservedMobileDB = new HashMap<>();
+
+    private MobileDB() {
+    }
 
     public MobileType addNewMobileType(MobileType mobileType) {
         String uuid = UUID.randomUUID().toString();
@@ -36,17 +36,19 @@ public class MobileDB {
         int stockQuantity = reservedMobileDB.get(mobileType);
         reservedMobileDB.put(mobileType, quantity + stockQuantity);
     }
-    
+
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("\nMobile Database:\n");
-        for(Map.Entry<MobileType, Integer> entry : reservedMobileDB.entrySet()) {
-            stringBuilder.append(entry.getKey().toString())
-                         .append("Stock: ")
-                         .append(entry.getValue())
-                         .append("\n");
-        }
+        reservedMobileDB.entrySet().stream().forEach((entry) -> {
+            stringBuilder
+                    .append(entry.getKey().getManufacturer()).append(" ")
+                    .append(entry.getKey().getType()).append(", ID:")
+                    .append(entry.getKey().getId())
+                    .append(", Stock: ")
+                    .append(entry.getValue()).append("\n");
+        });
         return stringBuilder.toString();
     }
 }

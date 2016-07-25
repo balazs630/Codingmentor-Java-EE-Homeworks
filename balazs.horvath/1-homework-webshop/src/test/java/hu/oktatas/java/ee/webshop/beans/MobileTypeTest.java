@@ -10,6 +10,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.Assert;
+import java.util.UUID;
 
 public class MobileTypeTest {
 
@@ -29,14 +30,16 @@ public class MobileTypeTest {
 
     @Test
     public void ApplePhoneWithValidColor() {
-        MobileType mobile = new MobileType(ManufacturerType.APPLE, "iPhone 5s", 1, Currency.HKD, BLACK);
+        String id = UUID.randomUUID().toString();
+        MobileType mobile = new MobileType(id, ManufacturerType.APPLE, "iPhone 5s", 500, Currency.HKD, BLACK);
         Set<ConstraintViolation<MobileType>> violations = validator.validate(mobile);
         Assert.assertEquals(0, violations.size());
     }
 
     @Test
     public void ApplePhoneWithInvalidColor() {
-        MobileType mobile = new MobileType(ManufacturerType.APPLE, "iPhone 6s", 1, Currency.HUF, PURPLE);
+        String id = UUID.randomUUID().toString();
+        MobileType mobile = new MobileType(id, ManufacturerType.APPLE, "iPhone 6s", 200, Currency.HUF, PURPLE);
         Set<ConstraintViolation<MobileType>> violations = validator.validate(mobile);
         Assert.assertEquals(1, violations.size());
         Assert.assertEquals(mobile, violations.iterator().next().getRootBean());
@@ -45,14 +48,16 @@ public class MobileTypeTest {
 
     @Test
     public void SamsungPhoneWithValidColor() {
-        MobileType mobile = new MobileType(ManufacturerType.SAMSUNG, "Galaxy S4", 1, Currency.HUF, WHITE);
+        String id = UUID.randomUUID().toString();
+        MobileType mobile = new MobileType(id, ManufacturerType.SAMSUNG, "Galaxy S4", 600, Currency.HUF, WHITE);
         Set<ConstraintViolation<MobileType>> violations = validator.validate(mobile);
         Assert.assertEquals(0, violations.size());
     }
 
     @Test
     public void SamsungPhoneWithInvalidColor() {
-        MobileType mobile = new MobileType(ManufacturerType.SAMSUNG, "Galaxy S5", 1, Currency.HUF, GREEN);
+        String id = UUID.randomUUID().toString();
+        MobileType mobile = new MobileType(id, ManufacturerType.SAMSUNG, "Galaxy S5", 900, Currency.HUF, GREEN);
         Set<ConstraintViolation<MobileType>> violations = validator.validate(mobile);
         Assert.assertEquals(1, violations.size());
         Assert.assertEquals(mobile, violations.iterator().next().getRootBean());
@@ -61,7 +66,8 @@ public class MobileTypeTest {
 
     @Test
     public void HTCPhoneWithValidColor() {
-        MobileType mobile = new MobileType(ManufacturerType.HTC, "One M8", 1, Currency.EUR, RED);
+        String id = UUID.randomUUID().toString();
+        MobileType mobile = new MobileType(id, ManufacturerType.HTC, "One M8", 1000, Currency.EUR, RED);
         Set<ConstraintViolation<MobileType>> violations = validator.validate(mobile);
         Assert.assertEquals(0, violations.size());
     }
