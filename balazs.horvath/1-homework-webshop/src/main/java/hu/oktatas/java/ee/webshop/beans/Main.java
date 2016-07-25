@@ -26,20 +26,20 @@ public class Main {
                 new TypeReference<List<UserDTO>>() {
         });
 
-        users.stream().forEach((user) -> {
+        for (UserDTO user : users) {
             USERDB.registrate(user);
-        });
+        }
 
-         List<MobileType> mobiles = MAPPER.readValue(Main.class.getClassLoader().getResource("json/mobiles.json"),
+        List<MobileType> mobiles = MAPPER.readValue(Main.class.getClassLoader().getResource("json/mobiles.json"),
                 new TypeReference<List<MobileType>>() {
         });
 
-         mobiles.stream().forEach((mobile) -> {
-             MOBILEDB.addNewMobileType(mobile);
-        });
+        for (MobileType mobile : mobiles) {
+            MOBILEDB.addNewMobileType(mobile);
+        }
 
         LOGGER.log(Level.INFO, "{0}", USERDB.toString());
         LOGGER.log(Level.INFO, "{0}", MOBILEDB.toString());
-        
+
     }
 }

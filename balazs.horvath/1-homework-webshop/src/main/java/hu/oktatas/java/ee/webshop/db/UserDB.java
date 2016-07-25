@@ -7,21 +7,15 @@ import java.util.Calendar;
 
 public class UserDB {
 
-    public static final UserDB INSTANCE = new UserDB();
-
-    public static UserDB getINSTANCE() {
-        return INSTANCE;
-    }
-
     private final Map<String, UserDTO> userDataBase = new HashMap<>();
-
     private final Calendar regTime = Calendar.getInstance();
+    public static final UserDB INSTANCE = new UserDB();
 
     private UserDB() {
     }
 
-    public Map<String, UserDTO> getUserDataBase() {
-        return userDataBase;
+    public static UserDB getINSTANCE() {
+        return INSTANCE;
     }
 
     public Calendar getRegTime() {
@@ -50,12 +44,12 @@ public class UserDB {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("\nUser Database:\n");
-        userDataBase.values().stream().forEach((user) -> {
-            stringBuilder
-                    .append(user.getFirstName()).append(" ")
-                    .append(user.getLastName()).append(", Registration time:")
-                    .append(user.getRegistrationDate().getTime()).append("\n");
-        });
+        userDataBase.values().stream().forEach(user
+                -> stringBuilder
+                .append(user.getFirstName()).append(" ")
+                .append(user.getLastName()).append(", Registration time:")
+                .append(user.getRegistrationDate().getTime()).append("\n")
+        );
         return stringBuilder.toString();
     }
 }

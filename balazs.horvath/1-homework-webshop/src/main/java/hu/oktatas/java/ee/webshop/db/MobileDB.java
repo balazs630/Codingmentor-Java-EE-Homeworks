@@ -41,14 +41,14 @@ public class MobileDB {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("\nMobile Database:\n");
-        reservedMobileDB.entrySet().stream().forEach((entry) -> {
+        reservedMobileDB.entrySet().stream().forEach(entry -> 
             stringBuilder
                     .append(entry.getKey().getManufacturer()).append(" ")
                     .append(entry.getKey().getType()).append(", ID:")
                     .append(entry.getKey().getId())
                     .append(", Stock: ")
-                    .append(entry.getValue()).append("\n");
-        });
+                    .append(entry.getValue()).append("\n")
+        );
         return stringBuilder.toString();
     }
 }
