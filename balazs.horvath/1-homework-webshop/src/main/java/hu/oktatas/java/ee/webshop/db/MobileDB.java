@@ -9,10 +9,10 @@ public class MobileDB {
 
     public static final MobileDB INSTANCE = new MobileDB();
 
+    private final Map<MobileType, Integer> reservedMobileDB = new HashMap<>();
+
     private MobileDB() {
     }
-
-    private final Map<MobileType, Integer> reservedMobileDB = new HashMap<>();
 
     public MobileType addNewMobileType(MobileType mobileType) {
         String uuid = UUID.randomUUID().toString();

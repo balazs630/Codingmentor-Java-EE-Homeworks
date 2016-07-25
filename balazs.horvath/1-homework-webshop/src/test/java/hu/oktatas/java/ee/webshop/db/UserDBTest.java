@@ -1,30 +1,27 @@
 package hu.oktatas.java.ee.webshop.db;
 
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
+import hu.oktatas.java.ee.webshop.beans.UserDTO;
+import java.util.Calendar;
+import org.junit.Before;
 import org.junit.Test;
 
 public class UserDBTest {
 
-    private static ValidatorFactory vf;
-    private static Validator validator;
+    private static final UserDB USERDB = UserDB.INSTANCE;
+    private final Calendar regTime = Calendar.getInstance();
+    private UserDTO user;
 
-    @BeforeClass
-    public static void setUpClass() {
-        vf = Validation.buildDefaultValidatorFactory();
-        validator = vf.getValidator();
-    }
-
-    @AfterClass
-    public static void close() {
-        vf.close();
+    @Before
+    public void setUpClass() {
+        user = new UserDTO("testuser", "Passs1234", "user@domain.com", regTime);
     }
 
     @Test
-    public void registrateTest() {
+    public void registrateTestTrue() {
+    }
+
+    @Test
+    public void registrateTestFalse() {
     }
 
     @Test
@@ -32,6 +29,10 @@ public class UserDBTest {
     }
 
     @Test
-    public void authenticateTest() {
+    public void authenticateTestTrue() {
+    }
+
+    @Test
+    public void authenticateTestFalse() {
     }
 }
