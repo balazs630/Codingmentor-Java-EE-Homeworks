@@ -20,27 +20,22 @@ public class UserDB {
         return INSTANCE;
     }
 
-    public Calendar getRegTime() {
-        return regTime;
-    }
-
     public UserDTO registrate(UserDTO user) throws UsernameAlreadyTakenException {
         if (userDataBase.containsKey(user.getUserName())) {
             throw new UsernameAlreadyTakenException(
                     "Username is Already Taken, Choose Another One!");
+        } else {
+            String userName = user.getUserName();
+            user.setRegistrationDate(regTime);
+            userDataBase.put(userName, user);
+            return user;
         }
-
-        String userName = user.getUserName();
-        user.setRegistrationDate(regTime);
-        userDataBase.put(userName, user);
-        return user;
     }
 
     public UserDTO getUser(String username) throws UsernameNotExistException {
         if (userDataBase.containsKey(username)) {
             return userDataBase.get(username);
-        }
-        else{
+        } else {
             throw new UsernameNotExistException(
                     "Username is Not Exist in the Database!");
         }
