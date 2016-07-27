@@ -1,5 +1,6 @@
 package hu.oktatas.java.ee.webshop.shoppingcart;
 
+import hu.oktatas.java.ee.webshop.shoppingcart.exceptions.MobileNotExistInTheCartException;
 import hu.oktatas.java.ee.webshop.beans.Main;
 import hu.oktatas.java.ee.webshop.beans.MobileType;
 import hu.oktatas.java.ee.webshop.db.MobileDB;
@@ -15,7 +16,7 @@ public class ShoppingCart {
     private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
     private static final MobileDB MOBILEDB = MobileDB.INSTANCE;
 
-    private ShoppingCart() {
+    public ShoppingCart() {
         this.cartItems = new HashMap<>();
     }
 

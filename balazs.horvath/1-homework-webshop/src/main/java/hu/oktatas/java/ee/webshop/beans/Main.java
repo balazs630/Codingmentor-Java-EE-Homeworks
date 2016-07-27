@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import hu.oktatas.java.ee.webshop.db.MobileDB;
 import hu.oktatas.java.ee.webshop.db.UserDB;
-import hu.oktatas.java.ee.webshop.db.exception.UsernameAlreadyTakenException;
+import hu.oktatas.java.ee.webshop.db.exceptions.UsernameAlreadyTakenException;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;

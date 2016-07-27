@@ -1,8 +1,8 @@
 package hu.oktatas.java.ee.webshop.db;
 
 import hu.oktatas.java.ee.webshop.beans.UserDTO;
-import hu.oktatas.java.ee.webshop.db.exception.UsernameAlreadyTakenException;
-import hu.oktatas.java.ee.webshop.db.exception.UsernameNotExistException;
+import hu.oktatas.java.ee.webshop.db.exceptions.UsernameAlreadyTakenException;
+import hu.oktatas.java.ee.webshop.db.exceptions.UsernameNotExistException;
 import java.util.Calendar;
 import org.junit.Assert;
 import org.junit.Before;

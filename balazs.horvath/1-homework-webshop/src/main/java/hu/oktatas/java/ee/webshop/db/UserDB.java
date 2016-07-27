@@ -1,7 +1,7 @@
 package hu.oktatas.java.ee.webshop.db;
 
-import hu.oktatas.java.ee.webshop.db.exception.UsernameAlreadyTakenException;
-import hu.oktatas.java.ee.webshop.db.exception.UsernameNotExistException;
+import hu.oktatas.java.ee.webshop.db.exceptions.UsernameAlreadyTakenException;
+import hu.oktatas.java.ee.webshop.db.exceptions.UsernameNotExistException;
 import hu.oktatas.java.ee.webshop.beans.UserDTO;
 import java.util.Map;
 import java.util.HashMap;

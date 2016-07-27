@@ -1,4 +1,4 @@
-package hu.oktatas.java.ee.webshop.shoppingcart;
+package hu.oktatas.java.ee.webshop.shoppingcart.exceptions;
 
 public class MobileNotExistInTheCartException extends Exception {
 

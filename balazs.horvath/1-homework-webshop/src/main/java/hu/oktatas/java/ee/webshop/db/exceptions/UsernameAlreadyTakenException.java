@@ -1,4 +1,4 @@
-package hu.oktatas.java.ee.webshop.db.exception;
+package hu.oktatas.java.ee.webshop.db.exceptions;
 
 public class UsernameAlreadyTakenException extends Exception {
 

@@ -1,11 +1,13 @@
 package hu.oktatas.java.ee.webshop.beans;
 
+import hu.oktatas.java.ee.webshop.annotations.MarkerAnnotation;
 import hu.oktatas.java.ee.webshop.constraint.Manufacturer;
 import java.util.Objects;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+@MarkerAnnotation
 @Manufacturer
 public class MobileType {
 
