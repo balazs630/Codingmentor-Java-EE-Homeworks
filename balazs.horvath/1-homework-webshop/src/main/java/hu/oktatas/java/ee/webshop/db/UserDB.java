@@ -47,7 +47,7 @@ public class UserDB {
         }
         return false;
     }
-
+    
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
