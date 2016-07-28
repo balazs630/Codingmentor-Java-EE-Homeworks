@@ -1,6 +1,5 @@
 package hu.oktatas.java.ee.webshop.beans;
 
-import hu.oktatas.java.ee.webshop.annotations.MarkerAnnotation;
 import hu.oktatas.java.ee.webshop.constraint.Phone;
 import hu.oktatas.java.ee.webshop.constraint.Password;
 import hu.oktatas.java.ee.webshop.constraint.Address;
@@ -12,8 +11,9 @@ import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 import hu.oktatas.java.ee.webshop.constraint.Name;
 import java.util.Objects;
+import hu.oktatas.java.ee.webshop.annotations.Validate;
 
-@MarkerAnnotation
+@Validate
 @Name
 @DateOfBirth
 public class UserDTO {
