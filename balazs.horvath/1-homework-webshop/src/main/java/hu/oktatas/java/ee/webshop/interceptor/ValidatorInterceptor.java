@@ -11,6 +11,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 import hu.oktatas.java.ee.webshop.annotations.Validate;
 import hu.oktatas.java.ee.webshop.annotations.ValidatorQualifier;
+import javax.validation.ValidationException;
 
 @Interceptor
 @BeanValidation
@@ -34,7 +35,7 @@ public class ValidatorInterceptor {
         Set<ConstraintViolation<Object>> violations = validator.validate(o);
         Optional<String> errorMessage = violations.stream().map(e -> "Validation error: " + e.getMessage() + " - property: " + e.getPropertyPath().toString() + " . ").reduce(String::concat);
         if (errorMessage.isPresent()) {
-            //throw new ValidationException(errorMessage.get());
+            throw new ValidationException(errorMessage.get());
         }
     }
 

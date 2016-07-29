@@ -1,7 +1,7 @@
 package hu.oktatas.java.ee.webshop.shoppingcart;
 
 import hu.oktatas.java.ee.webshop.shoppingcart.exceptions.MobileNotExistInTheCartException;
-import hu.oktatas.java.ee.webshop.beans.Main;
+import hu.oktatas.java.ee.webshop.main.Main;
 import hu.oktatas.java.ee.webshop.beans.MobileType;
 import hu.oktatas.java.ee.webshop.db.MobileDB;
 import java.util.Map;
@@ -12,9 +12,9 @@ import java.util.logging.Logger;
 
 public class ShoppingCart {
 
-    private final Map<MobileType, Integer> cartItems;
     private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
     private static final MobileDB MOBILEDB = MobileDB.INSTANCE;
+    private final Map<MobileType, Integer> cartItems;
 
     public ShoppingCart() {
         this.cartItems = new HashMap<>();
@@ -22,9 +22,11 @@ public class ShoppingCart {
 
     public void addItem(MobileType mobil, int quantity) {
         int currentQuantity = 0;
-        currentQuantity += cartItems.get(mobil);
-        cartItems.put(mobil, currentQuantity + quantity);
-        MOBILEDB.reserveMobile(mobil, quantity);
+        if (MobileDB.getReservedMobileDB().containsKey(mobil)) {
+            currentQuantity += cartItems.get(mobil);
+            cartItems.put(mobil, currentQuantity + quantity);
+            MOBILEDB.reserveMobile(mobil, quantity);
+        }
     }
 
     public void removeItem(MobileType mobil, int quantity) throws MobileNotExistInTheCartException {
