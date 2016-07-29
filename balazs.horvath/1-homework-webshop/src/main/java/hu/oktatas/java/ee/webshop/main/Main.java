@@ -7,7 +7,6 @@ import hu.oktatas.java.ee.webshop.beans.UserDTO;
 import hu.oktatas.java.ee.webshop.db.MobileDB;
 import hu.oktatas.java.ee.webshop.db.UserDB;
 import hu.oktatas.java.ee.webshop.db.exceptions.UsernameAlreadyTakenException;
-import hu.oktatas.java.ee.webshop.shoppingcart.ShoppingCart;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
