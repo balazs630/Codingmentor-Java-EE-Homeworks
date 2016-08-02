@@ -17,10 +17,10 @@ public class Main {
     private static final ObjectMapper MAPPER = new ObjectMapper();
     private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
 
-    private static final UserDB USERDB = UserDB.INSTANCE;
-    private static final MobileDB MOBILEDB = MobileDB.INSTANCE;
-    private static final String USERJSONRESOURCE = "json/users.json";
-    private static final String MOBILEJSONRESOURCE = "json/mobiles.json";
+    private static final UserDB USER_DB = UserDB.INSTANCE;
+    private static final MobileDB MOBILE_DB = MobileDB.INSTANCE;
+    private static final String USER_JSON_RESOURCE = "json/users.json";
+    private static final String MOBILE_JSON_RESOURCE = "json/mobiles.json";
 
     private Main() {
     }
@@ -29,25 +29,25 @@ public class Main {
             throws IOException, UsernameAlreadyTakenException {
 
         List<UserDTO> users = MAPPER.readValue(Main.class.getClassLoader()
-                .getResource(USERJSONRESOURCE),
+                .getResource(USER_JSON_RESOURCE),
                 new TypeReference<List<UserDTO>>() {
         });
 
         for (UserDTO user : users) {
-            USERDB.registrate(user);
+            USER_DB.registrate(user);
         }
 
         List<MobileType> mobiles = MAPPER.readValue(Main.class.getClassLoader().
-                getResource(MOBILEJSONRESOURCE),
+                getResource(MOBILE_JSON_RESOURCE),
                 new TypeReference<List<MobileType>>() {
         });
 
         for (MobileType mobile : mobiles) {
-            MOBILEDB.addNewMobileType(mobile);
+            MOBILE_DB.addNewMobileType(mobile);
         }
 
-        LOGGER.log(Level.INFO, "{0}", USERDB.toString());
-        LOGGER.log(Level.INFO, "{0}", MOBILEDB.toString());
+        LOGGER.log(Level.INFO, "{0}", USER_DB.toString());
+        LOGGER.log(Level.INFO, "{0}", MOBILE_DB.toString());
 
     }
 }

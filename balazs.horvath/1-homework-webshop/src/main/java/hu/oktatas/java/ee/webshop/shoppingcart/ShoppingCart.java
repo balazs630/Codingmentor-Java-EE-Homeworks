@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 public class ShoppingCart {
 
     private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
-    private static final MobileDB MOBILEDB = MobileDB.INSTANCE;
+    private static final MobileDB MOBILE_DB = MobileDB.INSTANCE;
     private final Map<MobileType, Integer> cartItems;
 
     public ShoppingCart() {
@@ -22,11 +22,10 @@ public class ShoppingCart {
 
     public void addItem(MobileType mobil, int quantity) {
         int currentQuantity = 0;
-        if (MobileDB.getReservedMobileDB().containsKey(mobil)) {
-            currentQuantity += cartItems.get(mobil);
-            cartItems.put(mobil, currentQuantity + quantity);
-            MOBILEDB.reserveMobile(mobil, quantity);
-        }
+        currentQuantity += cartItems.get(mobil);
+        cartItems.put(mobil, currentQuantity + quantity);
+        MOBILE_DB.reserveMobile(mobil, quantity);
+
     }
 
     public void removeItem(MobileType mobil, int quantity) throws MobileNotExistInTheCartException {
@@ -34,7 +33,7 @@ public class ShoppingCart {
             throw new MobileNotExistInTheCartException("The requested mobile ID is not in the cart!");
         } else {
             cartItems.remove(mobil);
-            MOBILEDB.returnMobile(mobil, quantity);
+            MOBILE_DB.returnMobile(mobil, quantity);
         }
     }
 
@@ -42,7 +41,7 @@ public class ShoppingCart {
         for (Entry<MobileType, Integer> entry : cartItems.entrySet()) {
             MobileType type = entry.getKey();
             Integer quantity = entry.getValue();
-            MOBILEDB.returnMobile(type, quantity);
+            MOBILE_DB.returnMobile(type, quantity);
         }
         cartItems.clear();
     }

@@ -16,10 +16,6 @@ public class UserDB {
     private UserDB() {
     }
 
-    public static UserDB getINSTANCE() {
-        return INSTANCE;
-    }
-
     public UserDTO registrate(UserDTO user) throws UsernameAlreadyTakenException {
         if (userDataBase.containsKey(user.getUserName())) {
             throw new UsernameAlreadyTakenException(

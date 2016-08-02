@@ -7,11 +7,11 @@ import hu.oktatas.java.ee.webshop.constraint.Name;
 
 public class NameValidator implements ConstraintValidator<Name, UserDTO> {
 
-    public boolean isFirstAndLastNameAdded(String firstName, String lastName) {
+    private static boolean isFirstAndLastNameAdded(String firstName, String lastName) {
         return firstName != null && lastName != null;
     }
 
-    public boolean isFirstAndLastNameNull(String firstName, String lastName) {
+    private static boolean isFirstAndLastNameNull(String firstName, String lastName) {
         return firstName == null && lastName == null;
     }
 
