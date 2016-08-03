@@ -22,7 +22,9 @@ public class ShoppingCart {
 
     public void addItem(MobileType mobil, int quantity) {
         int currentQuantity = 0;
-        currentQuantity += cartItems.get(mobil);
+        if (cartItems.get(mobil) != null) {
+            currentQuantity += cartItems.get(mobil);
+        }
         cartItems.put(mobil, currentQuantity + quantity);
         MOBILE_DB.reserveMobile(mobil, quantity);
 
@@ -32,7 +34,8 @@ public class ShoppingCart {
         if (!cartItems.containsKey(mobil)) {
             throw new MobileNotExistInTheCartException("The requested mobile ID is not in the cart!");
         } else {
-            cartItems.remove(mobil);
+            int mobilesInCart = cartItems.get(mobil);
+            cartItems.put(mobil, mobilesInCart - quantity);
             MOBILE_DB.returnMobile(mobil, quantity);
         }
     }
@@ -52,7 +55,7 @@ public class ShoppingCart {
         } else {
             Float total = 0f;
             for (Entry<MobileType, Integer> entry : cartItems.entrySet()) {
-                total += entry.getValue();
+                total += entry.getKey().getPrice() * entry.getValue();
             }
             return total;
         }

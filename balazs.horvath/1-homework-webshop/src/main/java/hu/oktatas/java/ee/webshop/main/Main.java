@@ -7,6 +7,8 @@ import hu.oktatas.java.ee.webshop.beans.UserDTO;
 import hu.oktatas.java.ee.webshop.db.MobileDB;
 import hu.oktatas.java.ee.webshop.db.UserDB;
 import hu.oktatas.java.ee.webshop.db.exceptions.UsernameAlreadyTakenException;
+import hu.oktatas.java.ee.webshop.shoppingcart.ShoppingCart;
+import hu.oktatas.java.ee.webshop.shoppingcart.exceptions.MobileNotExistInTheCartException;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
@@ -25,8 +27,8 @@ public class Main {
     private Main() {
     }
 
-    public static void main(String[] args) 
-            throws IOException, UsernameAlreadyTakenException {
+    public static void main(String[] args)
+            throws IOException, UsernameAlreadyTakenException, MobileNotExistInTheCartException {
 
         List<UserDTO> users = MAPPER.readValue(Main.class.getClassLoader()
                 .getResource(USER_JSON_RESOURCE),
@@ -49,5 +51,11 @@ public class Main {
         LOGGER.log(Level.INFO, "{0}", USER_DB.toString());
         LOGGER.log(Level.INFO, "{0}", MOBILE_DB.toString());
 
+        ShoppingCart cart = new ShoppingCart();
+
+        cart.addItem(mobiles.get(0), 2);
+        cart.addItem(mobiles.get(1), 3);
+        cart.removeItem(mobiles.get(1), 1);
+        cart.checkout();
     }
 }
