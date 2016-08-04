@@ -53,8 +53,8 @@ public class Main {
 
         ShoppingCart cart = new ShoppingCart();
 
-        cart.addItem(mobiles.get(0), 2);
-        cart.addItem(mobiles.get(1), 3);
+        cart.addItem(mobiles.get(0), 4);
+        cart.addItem(mobiles.get(1), 5);
         cart.removeItem(mobiles.get(1), 1);
         cart.checkout();
     }
