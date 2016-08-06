@@ -1,4 +1,4 @@
-package hu.oktatas.java.ee.webshop.main;
+package hu.oktatas.java.ee.webshop.startup;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,43 +13,48 @@ import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
+import javax.ejb.Singleton;
+import javax.ejb.Startup;
+import javax.inject.Inject;
 
-public class Main {
+@Startup
+@Singleton
+public class StartUpFunctions {
 
     private static final ObjectMapper MAPPER = new ObjectMapper();
-    private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
-
-    private static final UserDB USER_DB = UserDB.INSTANCE;
-    private static final MobileDB MOBILE_DB = MobileDB.INSTANCE;
+    private static final Logger LOGGER = Logger.getLogger(StartUpFunctions.class.getName());
     private static final String USER_JSON_RESOURCE = "json/users.json";
     private static final String MOBILE_JSON_RESOURCE = "json/mobiles.json";
 
-    private Main() {
-    }
+    @Inject
+    private UserDB userDB;
 
-    public static void main(String[] args)
-            throws IOException, UsernameAlreadyTakenException, MobileNotExistInTheCartException {
+    @Inject
+    private MobileDB mobileDB;
 
-        List<UserDTO> users = MAPPER.readValue(Main.class.getClassLoader()
+    @PostConstruct
+    public void businessMethod() throws MobileNotExistInTheCartException, IOException, UsernameAlreadyTakenException {
+        List<UserDTO> users = MAPPER.readValue(StartUpFunctions.class.getClassLoader()
                 .getResource(USER_JSON_RESOURCE),
                 new TypeReference<List<UserDTO>>() {
         });
 
         for (UserDTO user : users) {
-            USER_DB.registrate(user);
+            userDB.registrate(user);
         }
 
-        List<MobileType> mobiles = MAPPER.readValue(Main.class.getClassLoader().
+        List<MobileType> mobiles = MAPPER.readValue(StartUpFunctions.class.getClassLoader().
                 getResource(MOBILE_JSON_RESOURCE),
                 new TypeReference<List<MobileType>>() {
         });
 
-        for (MobileType mobile : mobiles) {
-            MOBILE_DB.addNewMobileType(mobile);
-        }
+        mobiles.stream().forEach((mobile) -> {
+            mobileDB.addNewMobileType(mobile);
+        });
 
-        LOGGER.log(Level.INFO, "{0}", USER_DB.toString());
-        LOGGER.log(Level.INFO, "{0}", MOBILE_DB.toString());
+        LOGGER.log(Level.INFO, "{0}", userDB.toString());
+        LOGGER.log(Level.INFO, "{0}", mobileDB.toString());
 
         ShoppingCart cart = new ShoppingCart();
 
@@ -57,5 +62,7 @@ public class Main {
         cart.addItem(mobiles.get(1), 5);
         cart.removeItem(mobiles.get(1), 1);
         cart.checkout();
+
     }
+
 }

@@ -4,15 +4,14 @@ import hu.oktatas.java.ee.webshop.beans.MobileType;
 import java.util.UUID;
 import java.util.HashMap;
 import java.util.Map;
+import javax.ejb.Singleton;
 
+@Singleton
 public class MobileDB {
 
     public static final MobileDB INSTANCE = new MobileDB();
 
     private final Map<MobileType, Integer> reservedMobileDB = new HashMap<>();
-
-    private MobileDB() {
-    }
 
     public MobileType addNewMobileType(MobileType mobileType) {
         String uuid = UUID.randomUUID().toString();

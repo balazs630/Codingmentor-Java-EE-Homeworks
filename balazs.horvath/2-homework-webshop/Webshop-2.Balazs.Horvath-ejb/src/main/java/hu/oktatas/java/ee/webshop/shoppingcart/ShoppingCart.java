@@ -1,7 +1,6 @@
 package hu.oktatas.java.ee.webshop.shoppingcart;
 
 import hu.oktatas.java.ee.webshop.shoppingcart.exceptions.MobileNotExistInTheCartException;
-import hu.oktatas.java.ee.webshop.main.Main;
 import hu.oktatas.java.ee.webshop.beans.MobileType;
 import hu.oktatas.java.ee.webshop.db.MobileDB;
 import java.util.Map;
@@ -9,10 +8,12 @@ import java.util.Map.Entry;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.Stateful;
 
+@Stateful
 public class ShoppingCart {
 
-    private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(ShoppingCart.class.getName());
     private static final MobileDB MOBILE_DB = MobileDB.INSTANCE;
     private final Map<MobileType, Integer> cartItems;
 

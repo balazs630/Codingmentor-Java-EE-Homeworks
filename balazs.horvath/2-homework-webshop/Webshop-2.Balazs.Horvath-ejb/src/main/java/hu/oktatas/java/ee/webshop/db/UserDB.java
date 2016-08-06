@@ -6,15 +6,14 @@ import hu.oktatas.java.ee.webshop.beans.UserDTO;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Calendar;
+import javax.ejb.Singleton;
 
+@Singleton
 public class UserDB {
 
     private final Map<String, UserDTO> userDataBase = new HashMap<>();
     private final Calendar regTime = Calendar.getInstance();
     public static final UserDB INSTANCE = new UserDB();
-
-    private UserDB() {
-    }
 
     public UserDTO registrate(UserDTO user) throws UsernameAlreadyTakenException {
         if (userDataBase.containsKey(user.getUserName())) {
