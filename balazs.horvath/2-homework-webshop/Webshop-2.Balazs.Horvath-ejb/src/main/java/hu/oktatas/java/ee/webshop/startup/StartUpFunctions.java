@@ -7,8 +7,6 @@ import hu.oktatas.java.ee.webshop.beans.UserDTO;
 import hu.oktatas.java.ee.webshop.db.MobileDB;
 import hu.oktatas.java.ee.webshop.db.UserDB;
 import hu.oktatas.java.ee.webshop.db.exceptions.UsernameAlreadyTakenException;
-import hu.oktatas.java.ee.webshop.shoppingcart.ShoppingCart;
-import hu.oktatas.java.ee.webshop.shoppingcart.exceptions.MobileNotExistInTheCartException;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
@@ -33,8 +31,7 @@ public class StartUpFunctions {
     @Inject
     private MobileDB mobileDB;
 
-    @PostConstruct
-    public void businessMethod() throws MobileNotExistInTheCartException, IOException, UsernameAlreadyTakenException {
+    private void addUsersFromJson() throws IOException, UsernameAlreadyTakenException {
         List<UserDTO> users = MAPPER.readValue(StartUpFunctions.class.getClassLoader()
                 .getResource(USER_JSON_RESOURCE),
                 new TypeReference<List<UserDTO>>() {
@@ -43,7 +40,9 @@ public class StartUpFunctions {
         for (UserDTO user : users) {
             userDB.registrate(user);
         }
+    }
 
+    private void addMobilesFromJson() throws IOException {
         List<MobileType> mobiles = MAPPER.readValue(StartUpFunctions.class.getClassLoader().
                 getResource(MOBILE_JSON_RESOURCE),
                 new TypeReference<List<MobileType>>() {
@@ -52,17 +51,15 @@ public class StartUpFunctions {
         mobiles.stream().forEach((mobile) -> {
             mobileDB.addNewMobileType(mobile);
         });
-
-        LOGGER.log(Level.INFO, "{0}", userDB.toString());
-        LOGGER.log(Level.INFO, "{0}", mobileDB.toString());
-
-        ShoppingCart cart = new ShoppingCart();
-
-        cart.addItem(mobiles.get(0), 4);
-        cart.addItem(mobiles.get(1), 5);
-        cart.removeItem(mobiles.get(1), 1);
-        cart.checkout();
-
     }
 
+    @PostConstruct
+    public void uploadData() {
+        try {
+            addUsersFromJson();
+            addMobilesFromJson();
+        } catch (IOException | UsernameAlreadyTakenException ex) {
+            LOGGER.log(Level.ALL, "Problem occorred on JSON import");
+        }
+    }
 }
