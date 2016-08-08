@@ -9,8 +9,10 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateful;
+import javax.enterprise.context.SessionScoped;
 
 @Stateful
+@SessionScoped
 public class ShoppingCart {
 
     private static final Logger LOGGER = Logger.getLogger(ShoppingCart.class.getName());

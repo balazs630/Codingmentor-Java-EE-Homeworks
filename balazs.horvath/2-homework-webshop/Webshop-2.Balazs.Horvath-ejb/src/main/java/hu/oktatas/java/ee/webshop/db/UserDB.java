@@ -15,6 +15,10 @@ public class UserDB {
     private final Calendar regTime = Calendar.getInstance();
     public static final UserDB INSTANCE = new UserDB();
 
+    public Map<String, UserDTO> getUserDataBase() {
+        return userDataBase;
+    }
+
     public UserDTO registrate(UserDTO user) throws UsernameAlreadyTakenException {
         if (userDataBase.containsKey(user.getUserName())) {
             throw new UsernameAlreadyTakenException(
@@ -24,6 +28,14 @@ public class UserDB {
             user.setRegistrationDate(regTime);
             userDataBase.put(userName, user);
             return user;
+        }
+    }
+
+    public boolean removeUser(UserDTO user) {
+        if (userDataBase.containsValue(user)) {
+            return userDataBase.remove(user.getUserName(), user);
+        } else {
+            return false;
         }
     }
 
@@ -42,7 +54,7 @@ public class UserDB {
         }
         return false;
     }
-    
+
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();

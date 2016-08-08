@@ -1,6 +1,7 @@
 package hu.oktatas.java.ee.webshop.db;
 
 import hu.oktatas.java.ee.webshop.beans.MobileType;
+import hu.oktatas.java.ee.webshop.db.exceptions.MobileNotExistException;
 import java.util.UUID;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,8 +11,11 @@ import javax.ejb.Singleton;
 public class MobileDB {
 
     public static final MobileDB INSTANCE = new MobileDB();
-
     private final Map<MobileType, Integer> reservedMobileDB = new HashMap<>();
+
+    public Map<MobileType, Integer> getReservedMobileDB() {
+        return reservedMobileDB;
+    }
 
     public MobileType addNewMobileType(MobileType mobileType) {
         String uuid = UUID.randomUUID().toString();
@@ -44,6 +48,22 @@ public class MobileDB {
         }
         reservedMobileDB.put(mobileType, stockQuantity + quantity);
         return true;
+    }
+
+    public int count(MobileType mobileType) throws MobileNotExistException {
+        if (reservedMobileDB.containsKey(mobileType)) {
+            return reservedMobileDB.getOrDefault(reservedMobileDB.containsKey(mobileType), 0);
+        } else {
+            throw new MobileNotExistException("count failed: mobile not exist");
+        }
+    }
+
+    public boolean remove(MobileType mobileType) throws MobileNotExistException {
+        if (reservedMobileDB.containsValue(mobileType)) {
+            return reservedMobileDB.remove(mobileType.getId(), mobileType);
+        } else {
+            throw new MobileNotExistException("remove failed: mobile not exist");
+        }
     }
 
     @Override

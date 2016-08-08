@@ -48,7 +48,7 @@ public class StartUpFunctions {
                 new TypeReference<List<MobileType>>() {
         });
 
-        mobiles.stream().forEach((mobile) -> {
+        mobiles.stream().forEach(mobile -> {
             mobileDB.addNewMobileType(mobile);
         });
     }

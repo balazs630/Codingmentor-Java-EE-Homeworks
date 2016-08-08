@@ -10,7 +10,7 @@
       "sex":"FEMALE",
       "registrationDate":null,
       "dateOfBirth":null,
-      "admin":false
+      "admin":true
    },
    
     {
@@ -24,7 +24,7 @@
       "sex":"MALE",
       "registrationDate":null,
       "dateOfBirth":null,
-      "admin":false
+      "admin":true
    },
    {
       "userName":"testuser3",
