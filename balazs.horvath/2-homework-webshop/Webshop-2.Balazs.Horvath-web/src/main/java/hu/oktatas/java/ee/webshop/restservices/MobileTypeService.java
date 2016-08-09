@@ -28,12 +28,14 @@ public class MobileTypeService implements Serializable {
 
     @POST
     @Path("/add")
+    //path nem jó
     public MobileType add(MobileType type, @Context HttpServletRequest request) {
         return mobileDB.addNewMobileType(type);
     }
 
     @DELETE
     @Path("/remove")
+    //path nem jó
     public MobileType remove(MobileType type, @Context HttpServletRequest request) throws MobileNotExistException{
         if (mobileDB.remove(type)) {
             return type;

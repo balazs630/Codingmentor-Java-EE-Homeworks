@@ -31,12 +31,14 @@ public class UserService implements Serializable {
 
     @POST
     @Path("/add")
+    //path nem jó
     public UserDTO add(UserDTO user, @Context HttpServletRequest request) throws UsernameAlreadyTakenException {
         return userDB.registrate(user);
     }
 
     @DELETE
     @Path("/remove")
+    //path nem jó
     public boolean remove(UserDTO user, @Context HttpServletRequest request) {
         return userDB.removeUser(user);
     }
