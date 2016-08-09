@@ -28,14 +28,12 @@ public class MobileTypeService implements Serializable {
 
     @POST
     @Path("/add")
-    // @AdminLoggedInCheck
     public MobileType add(MobileType type, @Context HttpServletRequest request) {
         return mobileDB.addNewMobileType(type);
     }
 
     @DELETE
     @Path("/remove")
-    // @AdminLoggedInCheck
     public MobileType remove(MobileType type, @Context HttpServletRequest request) throws MobileNotExistException{
         if (mobileDB.remove(type)) {
             return type;
@@ -44,7 +42,6 @@ public class MobileTypeService implements Serializable {
     }
 
     @GET
-    // @UserLoggedInCheck
     public Collection<MobileType> getMobileTypes() {
         return (Collection<MobileType>) mobileDB.getReservedMobileDB();
     }

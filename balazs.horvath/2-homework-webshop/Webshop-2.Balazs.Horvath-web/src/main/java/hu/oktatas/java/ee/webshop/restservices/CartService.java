@@ -26,14 +26,12 @@ public class CartService implements Serializable {
 
     @POST
     @Path("/add")
-   // @UserLoggedInCheck
     public void add(MobileType type, @Context HttpServletRequest request) {
         cart.addItem(type, 1);
     }
 
     @DELETE
     @Path("/remove")
-   // @UserLoggedInCheck
     public void remove(MobileType type, @Context HttpServletRequest request) 
             throws MobileNotExistInTheCartException {
         cart.removeItem(type, 1);
@@ -41,7 +39,6 @@ public class CartService implements Serializable {
 
     @POST
     @Path("/checkout")
-   // @UserLoggedInCheck
     public void checkout(@Context HttpServletRequest request) {
         cart.checkout();
         request.getSession().invalidate();

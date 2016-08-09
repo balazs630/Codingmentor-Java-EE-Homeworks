@@ -31,27 +31,23 @@ public class UserService implements Serializable {
 
     @POST
     @Path("/add")
-    // @AdminLoggedInCheck
     public UserDTO add(UserDTO user, @Context HttpServletRequest request) throws UsernameAlreadyTakenException {
         return userDB.registrate(user);
     }
 
     @DELETE
     @Path("/remove")
-    // @AdminLoggedInCheck
     public boolean remove(UserDTO user, @Context HttpServletRequest request) {
         return userDB.removeUser(user);
     }
 
     @GET
-    // @UserLoggedInCheck
     @Path("/id/{id}")
     public UserDTO getUserById(@PathParam("id") String id) throws UsernameNotExistException {
         return userDB.getUser(id);
     }
 
     @GET
-    // @UserLoggedInCheck
     public Collection<UserDTO> getUsers() {
         return (Collection<UserDTO>) userDB.getUserDataBase();
     }

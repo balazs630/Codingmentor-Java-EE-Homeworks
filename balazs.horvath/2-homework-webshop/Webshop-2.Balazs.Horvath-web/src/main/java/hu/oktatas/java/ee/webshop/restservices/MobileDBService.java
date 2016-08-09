@@ -1,6 +1,5 @@
 package hu.oktatas.java.ee.webshop.restservices;
 
-import hu.oktatas.java.ee.webshop.beans.MobileType;
 import hu.oktatas.java.ee.webshop.db.MobileDB;
 import hu.oktatas.java.ee.webshop.db.exceptions.MobileNotExistException;
 import java.io.Serializable;
@@ -27,22 +26,19 @@ public class MobileDBService implements Serializable {
 
     @GET
     @Path("/count/{id}")
-    // @UserLoggedInCheck
-    public Integer count(@PathParam("id") MobileType mobile) throws MobileNotExistException {
-        return mobileDB.count(mobile);
+    public Integer count(@PathParam("id") String id) throws MobileNotExistException {
+        return mobileDB.count(mobileDB.getMobileTypeByID(id));
     }
 
     @PUT
     @Path("/add/{id}")
-    // @AdminLoggedInCheck
-    public Boolean add(int quantity, @PathParam("id") MobileType mobile, @Context HttpServletRequest request) {
-        return mobileDB.returnMobile(mobile, quantity);
+    public Boolean add(int quantity, @PathParam("id") String id, @Context HttpServletRequest request) {
+        return mobileDB.returnMobile(mobileDB.getMobileTypeByID(id), quantity);
     }
 
     @PUT
     @Path("/remove/{id}")
-    // @AdminLoggedInCheck
-    public Boolean remove(Integer quantity, @PathParam("id") MobileType mobile, @Context HttpServletRequest request) {
-        return mobileDB.reserveMobile(mobile, quantity);
+    public Boolean remove(Integer quantity, @PathParam("id") String id, @Context HttpServletRequest request) {
+        return mobileDB.reserveMobile(mobileDB.getMobileTypeByID(id), quantity);
     }
 }

@@ -17,6 +17,16 @@ public class MobileDB {
         return reservedMobileDB;
     }
 
+    public MobileType getMobileTypeByID(String id){
+    MobileType mobile = null;
+        for (Map.Entry<MobileType, Integer> entry : reservedMobileDB.entrySet()) {
+            if (entry.getKey().getId().equals(id)) {
+                mobile = entry.getKey();
+            }
+        }
+        return mobile;
+    }
+    
     public MobileType addNewMobileType(MobileType mobileType) {
         String uuid = UUID.randomUUID().toString();
         mobileType.setId(uuid);
