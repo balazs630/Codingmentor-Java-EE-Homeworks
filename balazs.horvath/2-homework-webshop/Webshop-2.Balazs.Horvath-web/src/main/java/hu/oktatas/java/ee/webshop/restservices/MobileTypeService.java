@@ -23,7 +23,7 @@ import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 public class MobileTypeService implements Serializable {
 
     @Inject
-    private MobileDB mobileDB;
+    private transient MobileDB mobileDB;
 
     @POST
     @Consumes(APPLICATION_JSON)

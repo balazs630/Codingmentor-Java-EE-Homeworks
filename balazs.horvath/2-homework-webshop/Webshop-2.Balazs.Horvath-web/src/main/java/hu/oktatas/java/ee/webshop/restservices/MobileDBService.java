@@ -22,7 +22,7 @@ import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 public class MobileDBService implements Serializable {
 
     @Inject
-    private MobileDB mobileDB;
+    private transient MobileDB mobileDB;
 
     @GET
     @Path("/count/{id}")

@@ -27,7 +27,7 @@ import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 public class UserService implements Serializable {
 
     @Inject
-    private UserDB userDB;
+    private transient UserDB userDB;
 
     @POST
     @Consumes(APPLICATION_JSON)

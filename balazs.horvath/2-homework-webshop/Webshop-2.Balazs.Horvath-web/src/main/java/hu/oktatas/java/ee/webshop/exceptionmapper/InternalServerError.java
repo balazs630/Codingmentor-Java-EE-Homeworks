@@ -8,7 +8,7 @@ public class InternalServerError implements ExceptionMapper<Throwable> {
 
     @Override
     public Response toResponse(Throwable exception) {
-        Logger.getLogger(InternalServerError.class.getName()).log(Logger.Level.FATAL, this);
+        Logger.getLogger(InternalServerError.class.getName()).log(Logger.Level.FATAL, exception);
         return Response.serverError().
                 status(Response.Status.INTERNAL_SERVER_ERROR).build();
     }

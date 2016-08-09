@@ -22,9 +22,13 @@ public class ValidatorInterceptor {
     private Validator validator;
 
     @AroundInvoke
-    public Object logMethod(InvocationContext ic) throws Exception {
-        validateParameters(ic.getParameters());
-        return ic.proceed();
+    public Object logMethod(InvocationContext ic) throws ValidationException {
+        try {
+            validateParameters(ic.getParameters());
+            return ic.proceed();
+        } catch (Exception ex) {
+            throw new ValidationException("Validation error:" + ex);
+        }
     }
 
     private void validateParameters(Object[] parameters) {

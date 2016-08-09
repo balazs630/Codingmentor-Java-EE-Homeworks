@@ -45,12 +45,9 @@ public class StartUpFunctions {
     private void addMobilesFromJson() throws IOException {
         List<MobileType> mobiles = mapper.readValue(StartUpFunctions.class.getClassLoader().
                 getResource(MOBILE_JSON_RESOURCE),
-                new TypeReference<List<MobileType>>() {
-        });
+                new TypeReference<List<MobileType>>(){});
 
-        mobiles.stream().forEach(mobile -> {
-            mobileDB.addNewMobileType(mobile);
-        });
+        mobiles.stream().forEach(mobile -> mobileDB.addNewMobileType(mobile));
     }
 
     @PostConstruct
@@ -59,7 +56,7 @@ public class StartUpFunctions {
             addUsersFromJson();
             addMobilesFromJson();
         } catch (IOException | UsernameAlreadyTakenException ex) {
-            LOGGER.log(Level.ALL, "Problem occorred on JSON import");
+            LOGGER.log(Level.ALL, "Problem occorred on JSON import: {0}", ex);
         }
     }
 }

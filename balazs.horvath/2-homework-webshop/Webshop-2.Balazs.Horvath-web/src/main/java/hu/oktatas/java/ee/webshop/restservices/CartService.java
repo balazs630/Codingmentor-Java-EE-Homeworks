@@ -22,7 +22,7 @@ import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 public class CartService implements Serializable {
 
     @Inject
-    private ShoppingCart cart;
+    private transient ShoppingCart cart;
 
     @POST
     @Path("/add")
