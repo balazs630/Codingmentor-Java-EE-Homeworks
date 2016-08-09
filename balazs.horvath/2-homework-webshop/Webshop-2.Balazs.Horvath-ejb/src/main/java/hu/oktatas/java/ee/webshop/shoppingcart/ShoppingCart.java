@@ -10,10 +10,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateful;
 import javax.enterprise.context.SessionScoped;
+import java.io.Serializable;
 
 @Stateful
 @SessionScoped
-public class ShoppingCart {
+public class ShoppingCart implements Serializable{
 
     private static final Logger LOGGER = Logger.getLogger(ShoppingCart.class.getName());
     private static final MobileDB MOBILE_DB = MobileDB.INSTANCE;

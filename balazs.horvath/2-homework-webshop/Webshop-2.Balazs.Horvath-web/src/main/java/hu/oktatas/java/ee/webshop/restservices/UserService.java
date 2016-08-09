@@ -20,7 +20,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
-@Path("/user")
+@Path("/users")
 @SessionScoped
 @Produces(APPLICATION_JSON)
 @Consumes(APPLICATION_JSON)

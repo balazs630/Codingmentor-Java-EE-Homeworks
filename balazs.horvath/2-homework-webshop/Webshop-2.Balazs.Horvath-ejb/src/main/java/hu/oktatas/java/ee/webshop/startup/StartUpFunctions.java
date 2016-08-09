@@ -20,7 +20,7 @@ import javax.inject.Inject;
 @Singleton
 public class StartUpFunctions {
 
-    private static final ObjectMapper MAPPER = new ObjectMapper();
+    private final ObjectMapper mapper = new ObjectMapper();
     private static final Logger LOGGER = Logger.getLogger(StartUpFunctions.class.getName());
     private static final String USER_JSON_RESOURCE = "json/users.json";
     private static final String MOBILE_JSON_RESOURCE = "json/mobiles.json";
@@ -32,7 +32,7 @@ public class StartUpFunctions {
     private MobileDB mobileDB;
 
     private void addUsersFromJson() throws IOException, UsernameAlreadyTakenException {
-        List<UserDTO> users = MAPPER.readValue(StartUpFunctions.class.getClassLoader()
+        List<UserDTO> users = mapper.readValue(StartUpFunctions.class.getClassLoader()
                 .getResource(USER_JSON_RESOURCE),
                 new TypeReference<List<UserDTO>>() {
         });
@@ -43,7 +43,7 @@ public class StartUpFunctions {
     }
 
     private void addMobilesFromJson() throws IOException {
-        List<MobileType> mobiles = MAPPER.readValue(StartUpFunctions.class.getClassLoader().
+        List<MobileType> mobiles = mapper.readValue(StartUpFunctions.class.getClassLoader().
                 getResource(MOBILE_JSON_RESOURCE),
                 new TypeReference<List<MobileType>>() {
         });
