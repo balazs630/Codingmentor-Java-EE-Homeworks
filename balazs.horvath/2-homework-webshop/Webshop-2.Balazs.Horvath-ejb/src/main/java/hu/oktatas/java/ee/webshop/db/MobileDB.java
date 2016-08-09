@@ -5,6 +5,7 @@ import hu.oktatas.java.ee.webshop.db.exceptions.MobileNotExistException;
 import java.util.UUID;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 import javax.ejb.Singleton;
 
 @Singleton
@@ -19,7 +20,7 @@ public class MobileDB {
 
     public MobileType getMobileTypeByID(String id){
     MobileType mobile = null;
-        for (Map.Entry<MobileType, Integer> entry : reservedMobileDB.entrySet()) {
+        for (Entry<MobileType, Integer> entry : reservedMobileDB.entrySet()) {
             if (entry.getKey().getId().equals(id)) {
                 mobile = entry.getKey();
             }

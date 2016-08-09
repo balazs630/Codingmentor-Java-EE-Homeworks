@@ -23,22 +23,20 @@ import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 @Path("/users")
 @SessionScoped
 @Produces(APPLICATION_JSON)
-@Consumes(APPLICATION_JSON)
+
 public class UserService implements Serializable {
 
     @Inject
     private UserDB userDB;
 
     @POST
-    @Path("/add")
-    //path nem jó
+    @Consumes(APPLICATION_JSON)
     public UserDTO add(UserDTO user, @Context HttpServletRequest request) throws UsernameAlreadyTakenException {
         return userDB.registrate(user);
     }
 
     @DELETE
-    @Path("/remove")
-    //path nem jó
+    @Consumes(APPLICATION_JSON)
     public boolean remove(UserDTO user, @Context HttpServletRequest request) {
         return userDB.removeUser(user);
     }

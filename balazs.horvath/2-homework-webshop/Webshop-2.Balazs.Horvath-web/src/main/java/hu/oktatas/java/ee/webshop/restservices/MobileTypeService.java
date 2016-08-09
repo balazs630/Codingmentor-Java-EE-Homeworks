@@ -20,22 +20,19 @@ import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 @Path("/mobiletypes")
 @SessionScoped
 @Produces(APPLICATION_JSON)
-@Consumes(APPLICATION_JSON)
 public class MobileTypeService implements Serializable {
 
     @Inject
     private MobileDB mobileDB;
 
     @POST
-    @Path("/add")
-    //path nem jó
+    @Consumes(APPLICATION_JSON)
     public MobileType add(MobileType type, @Context HttpServletRequest request) {
         return mobileDB.addNewMobileType(type);
     }
 
     @DELETE
-    @Path("/remove")
-    //path nem jó
+    @Consumes(APPLICATION_JSON)
     public MobileType remove(MobileType type, @Context HttpServletRequest request) throws MobileNotExistException{
         if (mobileDB.remove(type)) {
             return type;
