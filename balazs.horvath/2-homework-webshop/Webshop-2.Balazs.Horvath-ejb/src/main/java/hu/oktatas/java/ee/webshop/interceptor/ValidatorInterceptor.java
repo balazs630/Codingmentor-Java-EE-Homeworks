@@ -22,7 +22,7 @@ public class ValidatorInterceptor {
     private Validator validator;
 
     @AroundInvoke
-    public Object logMethod(InvocationContext ic) throws ValidationException {
+    public Object logMethod(InvocationContext ic) {
         try {
             validateParameters(ic.getParameters());
             return ic.proceed();

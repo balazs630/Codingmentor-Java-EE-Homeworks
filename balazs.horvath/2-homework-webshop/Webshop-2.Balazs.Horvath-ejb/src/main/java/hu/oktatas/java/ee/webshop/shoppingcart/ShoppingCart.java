@@ -18,7 +18,7 @@ public class ShoppingCart implements Serializable{
 
     private static final Logger LOGGER = Logger.getLogger(ShoppingCart.class.getName());
     private static final MobileDB MOBILE_DB = MobileDB.INSTANCE;
-    private final Map<MobileType, Integer> cartItems;
+    private final transient Map<MobileType, Integer> cartItems;
 
     public ShoppingCart() {
         this.cartItems = new HashMap<>();
