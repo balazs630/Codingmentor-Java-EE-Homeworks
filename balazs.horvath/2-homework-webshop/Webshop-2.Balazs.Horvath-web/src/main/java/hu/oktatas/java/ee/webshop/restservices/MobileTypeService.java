@@ -3,6 +3,7 @@ package hu.oktatas.java.ee.webshop.restservices;
 import hu.oktatas.java.ee.webshop.db.exceptions.MobileNotExistException;
 import hu.oktatas.java.ee.webshop.beans.MobileType;
 import hu.oktatas.java.ee.webshop.db.MobileDB;
+import hu.oktatas.java.ee.webshop.util.VerifyLogin;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.enterprise.context.SessionScoped;
@@ -28,12 +29,14 @@ public class MobileTypeService implements Serializable {
     @POST
     @Consumes(APPLICATION_JSON)
     public MobileType add(MobileType type, @Context HttpServletRequest request) {
+        VerifyLogin.adminLogin(request);
         return mobileDB.addNewMobileType(type);
     }
 
     @DELETE
     @Consumes(APPLICATION_JSON)
     public MobileType remove(MobileType type, @Context HttpServletRequest request) throws MobileNotExistException{
+        VerifyLogin.adminLogin(request);
         if (mobileDB.remove(type)) {
             return type;
         }

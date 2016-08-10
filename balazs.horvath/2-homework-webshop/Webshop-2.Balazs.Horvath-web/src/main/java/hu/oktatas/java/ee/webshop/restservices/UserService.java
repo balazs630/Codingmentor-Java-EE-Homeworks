@@ -4,6 +4,7 @@ import hu.oktatas.java.ee.webshop.beans.UserDTO;
 import hu.oktatas.java.ee.webshop.db.UserDB;
 import hu.oktatas.java.ee.webshop.db.exceptions.UsernameAlreadyTakenException;
 import hu.oktatas.java.ee.webshop.db.exceptions.UsernameNotExistException;
+import hu.oktatas.java.ee.webshop.util.VerifyLogin;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.enterprise.context.SessionScoped;
@@ -32,12 +33,14 @@ public class UserService implements Serializable {
     @POST
     @Consumes(APPLICATION_JSON)
     public UserDTO add(UserDTO user, @Context HttpServletRequest request) throws UsernameAlreadyTakenException {
+        VerifyLogin.adminLogin(request);
         return userDB.registrate(user);
     }
 
     @DELETE
     @Consumes(APPLICATION_JSON)
     public boolean remove(UserDTO user, @Context HttpServletRequest request) {
+        VerifyLogin.adminLogin(request);
         return userDB.removeUser(user);
     }
 

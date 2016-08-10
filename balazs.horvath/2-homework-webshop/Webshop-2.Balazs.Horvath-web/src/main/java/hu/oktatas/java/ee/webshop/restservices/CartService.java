@@ -3,6 +3,7 @@ package hu.oktatas.java.ee.webshop.restservices;
 import hu.oktatas.java.ee.webshop.beans.MobileType;
 import hu.oktatas.java.ee.webshop.shoppingcart.ShoppingCart;
 import hu.oktatas.java.ee.webshop.shoppingcart.exceptions.MobileNotExistInTheCartException;
+import hu.oktatas.java.ee.webshop.util.VerifyLogin;
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
@@ -26,20 +27,25 @@ public class CartService implements Serializable {
 
     @POST
     @Path("/add")
-    public void add(MobileType type, @Context HttpServletRequest request) {
+    public MobileType add(MobileType type, @Context HttpServletRequest request) {
+        VerifyLogin.userLogin(request);
         cart.addItem(type, 1);
+        return type;
     }
 
     @DELETE
     @Path("/remove")
-    public void remove(MobileType type, @Context HttpServletRequest request) 
+    public MobileType remove(MobileType type, @Context HttpServletRequest request) 
             throws MobileNotExistInTheCartException {
+        VerifyLogin.userLogin(request);
         cart.removeItem(type, 1);
+        return type;
     }
 
     @POST
     @Path("/checkout")
     public void checkout(@Context HttpServletRequest request) {
+        VerifyLogin.userLogin(request);
         cart.checkout();
         request.getSession().invalidate();
     }
