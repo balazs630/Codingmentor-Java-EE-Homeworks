@@ -8,7 +8,6 @@ import hu.oktatas.java.ee.webshop.util.VerifyLogin;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.enterprise.context.SessionScoped;
-import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.Consumes;
@@ -20,6 +19,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
+import javax.ejb.EJB;
 
 @Path("/users")
 @SessionScoped
@@ -27,7 +27,7 @@ import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
 public class UserService implements Serializable {
 
-    @Inject
+    @EJB
     private transient UserDB userDB;
 
     @POST
