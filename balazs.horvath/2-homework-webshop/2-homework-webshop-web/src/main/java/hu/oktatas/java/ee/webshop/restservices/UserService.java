@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.Collection;
 import javax.enterprise.context.SessionScoped;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -59,9 +58,8 @@ public class UserService implements Serializable {
     @Path("/login")
     public UserDTO login(UserDTO loginUser, @Context HttpServletRequest request) throws UsernameNotExistException {
         if (userDB.authenticate(loginUser.getUserName(), loginUser.getPassword())) {
-            UserDTO user = userDB.getUser(loginUser.getUserName());
-            HttpSession session = request.getSession(false);
-            session.setAttribute("user", user);
+            userDB.getUser(loginUser.getUserName());
+            request.getSession(false);
             request.getSession();
             return loginUser;
         }
