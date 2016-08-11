@@ -1,0 +1,4 @@
+﻿http://localhost:8080/2-homework-webshop-web/app/mobiletypes
+http://localhost:8080/2-homework-webshop-web/app/users
+http://localhost:8080/2-homework-webshop-web/app/inventory
+http://localhost:8080/2-homework-webshop-web/app/shoppingcart

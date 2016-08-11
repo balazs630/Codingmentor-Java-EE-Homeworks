@@ -1,0 +1,13 @@
+   {
+      "userName":"testuser1",
+      "password":"Pass1234",
+      "firstName":"Balázs",
+      "lastName":"Horváth",
+      "address":"1066 Budapest, Nyugati tér 1.",
+      "phone":"+36302001001",
+      "email":"user1@domain.com",
+      "sex":"FEMALE",
+      "registrationDate":null,
+      "dateOfBirth":null,
+      "admin":true
+   }
