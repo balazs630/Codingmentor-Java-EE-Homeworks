@@ -8,7 +8,7 @@
     </parent>
 
     <groupId>hu.oktatas.java.ee</groupId>
-    <artifactId>Webshop-2.Balazs.Horvath-ejb</artifactId>
+    <artifactId>2-homework-webshop-ejb</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>ejb</packaging>
 
