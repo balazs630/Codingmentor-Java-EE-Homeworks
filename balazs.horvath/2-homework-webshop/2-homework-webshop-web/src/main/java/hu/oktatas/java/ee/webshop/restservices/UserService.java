@@ -61,15 +61,10 @@ public class UserService implements Serializable {
         if (userDB.authenticate(loginUser.getUserName(), loginUser.getPassword())) {
             UserDTO user = userDB.getUser(loginUser.getUserName());
             HttpSession session = request.getSession(false);
-            if (session == null) {
-                request.getSession();
-                return user;
-
-            } else {
-                session.invalidate();
-            }
+            session.setAttribute("user", user);
+            request.getSession();
+            return loginUser;
         }
         throw new UsernameNotExistException("login failed: wrong username or password");
     }
-
 }
