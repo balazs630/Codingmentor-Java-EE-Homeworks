@@ -24,24 +24,24 @@ import javax.ejb.EJB;
 @Path("/users")
 @SessionScoped
 @Produces(APPLICATION_JSON)
-
+@Consumes(APPLICATION_JSON)
 public class UserService implements Serializable {
 
     @EJB
     private transient UserDB userDB;
 
     @POST
-    @Consumes(APPLICATION_JSON)
     public UserDTO add(UserDTO user, @Context HttpServletRequest request) throws UsernameAlreadyTakenException {
         VerifyLogin.adminLogin(request);
-        return userDB.registrate(user);
+        userDB.registrate(user);
+        return user;
     }
 
     @DELETE
-    @Consumes(APPLICATION_JSON)
-    public boolean remove(UserDTO user, @Context HttpServletRequest request) {
+    public UserDTO remove(UserDTO user, @Context HttpServletRequest request) {
         VerifyLogin.adminLogin(request);
-        return userDB.removeUser(user);
+        userDB.removeUser(user);
+        return user;
     }
 
     @GET

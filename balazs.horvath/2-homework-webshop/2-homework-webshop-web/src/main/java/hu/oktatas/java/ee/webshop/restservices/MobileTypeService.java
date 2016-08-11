@@ -21,21 +21,20 @@ import javax.ejb.EJB;
 @Path("/mobiletypes")
 @SessionScoped
 @Produces(APPLICATION_JSON)
+@Consumes(APPLICATION_JSON)
 public class MobileTypeService implements Serializable {
 
     @EJB
     private transient MobileDB mobileDB;
 
     @POST
-    @Consumes(APPLICATION_JSON)
     public MobileType add(MobileType type, @Context HttpServletRequest request) {
         VerifyLogin.adminLogin(request);
         return mobileDB.addNewMobileType(type);
     }
 
     @DELETE
-    @Consumes(APPLICATION_JSON)
-    public MobileType remove(MobileType type, @Context HttpServletRequest request) throws MobileNotExistException{
+    public MobileType remove(MobileType type, @Context HttpServletRequest request) throws MobileNotExistException {
         VerifyLogin.adminLogin(request);
         if (mobileDB.remove(type)) {
             return type;
