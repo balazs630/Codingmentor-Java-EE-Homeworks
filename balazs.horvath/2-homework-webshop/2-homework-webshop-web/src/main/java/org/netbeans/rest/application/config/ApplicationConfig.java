@@ -18,12 +18,15 @@ public class ApplicationConfig extends Application {
     }
 
     /**
-     * Do not modify addRestResourceClasses() method.
-     * It is automatically populated with
-     * all resources defined in the project.
-     * If required, comment out calling this method in getClasses().
+     * Do not modify addRestResourceClasses() method. It is automatically
+     * populated with all resources defined in the project. If required, comment
+     * out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(hu.oktatas.java.ee.webshop.restservices.CartService.class);
+        resources.add(hu.oktatas.java.ee.webshop.restservices.MobileDBService.class);
+        resources.add(hu.oktatas.java.ee.webshop.restservices.MobileTypeService.class);
+        resources.add(hu.oktatas.java.ee.webshop.restservices.UserService.class);
     }
-    
+
 }
