@@ -10,7 +10,6 @@ import javax.interceptor.InvocationContext;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 import hu.oktatas.java.ee.webshop.annotations.Validate;
-import hu.oktatas.java.ee.webshop.annotations.ValidatorQualifier;
 import javax.validation.ValidationException;
 
 @Interceptor
@@ -18,7 +17,6 @@ import javax.validation.ValidationException;
 public class ValidatorInterceptor {
 
     @Inject
-    @ValidatorQualifier
     private Validator validator;
 
     @AroundInvoke

@@ -1,1 +1,1 @@
-curl --verbose --write-out '\n' --request POST --data @single_mobile.json --header "Content-Type: application/json" --cookie-jar cookie.txt --cookie cookie.txt 'http://localhost:8080/Webshop-2.Balazs.Horvath-web/app/mobiletypes' > single_mobile.json
+curl --verbose --write-out '\n' --request POST --data @single_mobile.json --header "Content-Type: application/json" --cookie-jar cookie.txt --cookie cookie.txt 'http://localhost:8080/2-homework-webshop-web/app/mobiletypes' > single_mobile.json
