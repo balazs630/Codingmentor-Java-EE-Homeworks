@@ -3,6 +3,7 @@ http://localhost:8080/2-homework-webshop-web/app/users
 http://localhost:8080/2-homework-webshop-web/app/users/id/"id"
 http://localhost:8080/2-homework-webshop-web/app/users/login
 
+
 http://localhost:8080/2-homework-webshop-web/app/mobiletypes
 
 
