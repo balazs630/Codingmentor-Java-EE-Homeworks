@@ -23,10 +23,11 @@ public class VerifyLogin {
     public static UserDTO userLogin(HttpServletRequest request) {
         HttpSession session = request.getSession();
         Object userObject = session.getAttribute(USER_SESSION_ATTRIBUTE);
-        if ((userObject != null) && (userObject instanceof UserDTO)) {
+        if ((userObject != null && userObject instanceof UserDTO)) {
             return (UserDTO) userObject;
+        } else {
+            session.invalidate();
+            throw new ForbiddenException("user not logged in");
         }
-        session.invalidate();
-        throw new ForbiddenException("user not logged in");
     }
 }

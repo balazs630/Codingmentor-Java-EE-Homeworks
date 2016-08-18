@@ -31,14 +31,16 @@ public class UserService implements Serializable {
 
     @POST
     public UserDTO add(UserDTO user, @Context HttpServletRequest request) throws UsernameAlreadyTakenException {
-        VerifyLogin.adminLogin(request);
+            //VerifyLogin.adminLogin(request);
+        VerifyLogin.userLogin(request);
         userDB.registrate(user);
         return user;
     }
 
     @DELETE
     public UserDTO remove(UserDTO user, @Context HttpServletRequest request) {
-        VerifyLogin.adminLogin(request);
+            //VerifyLogin.adminLogin(request);
+        VerifyLogin.userLogin(request);
         userDB.removeUser(user);
         return user;
     }

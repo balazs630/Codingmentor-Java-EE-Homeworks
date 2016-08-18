@@ -28,14 +28,17 @@ public class MobileTypeService implements Serializable {
     private transient MobileDB mobileDB;
 
     @POST
+    @Path("/add")
     public MobileType add(MobileType type, @Context HttpServletRequest request) {
-        VerifyLogin.adminLogin(request);
+            //VerifyLogin.adminLogin(request);
+        VerifyLogin.userLogin(request);
         return mobileDB.addNewMobileType(type);
     }
 
     @DELETE
     public MobileType remove(MobileType type, @Context HttpServletRequest request) throws MobileNotExistException {
-        VerifyLogin.adminLogin(request);
+            //VerifyLogin.adminLogin(request);
+        VerifyLogin.userLogin(request);    
         if (mobileDB.remove(type)) {
             return type;
         }
