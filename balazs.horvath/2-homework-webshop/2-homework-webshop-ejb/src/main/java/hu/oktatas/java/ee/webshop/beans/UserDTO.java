@@ -11,12 +11,13 @@ import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 import hu.oktatas.java.ee.webshop.constraint.Name;
 import java.util.Objects;
+import java.io.Serializable;
 import hu.oktatas.java.ee.webshop.annotations.Validate;
 
 @Validate
 @Name
 @DateOfBirth
-public class UserDTO {
+public class UserDTO implements Serializable {
 
     @NotNull
     @Size(min = 6)

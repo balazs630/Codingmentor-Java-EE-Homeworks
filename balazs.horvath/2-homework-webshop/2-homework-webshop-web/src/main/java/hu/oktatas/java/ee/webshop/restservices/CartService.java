@@ -44,9 +44,9 @@ public class CartService implements Serializable {
 
     @POST
     @Path("/checkout")
-    public void checkout(@Context HttpServletRequest request) {
+    public String checkout(@Context HttpServletRequest request) {
         VerifyLogin.userLogin(request);
-        cart.checkout();
         request.getSession().invalidate();
+        return cart.checkout();
     }
 }

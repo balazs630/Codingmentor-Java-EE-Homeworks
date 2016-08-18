@@ -6,17 +6,15 @@ import hu.oktatas.java.ee.webshop.db.MobileDB;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ejb.Stateful;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import javax.ejb.Remove;
 
 @Stateful
 @SessionScoped
-public class ShoppingCart implements Serializable{
+public class ShoppingCart implements Serializable {
 
-    private static final Logger LOGGER = Logger.getLogger(ShoppingCart.class.getName());
     private static final MobileDB MOBILE_DB = MobileDB.INSTANCE;
     private final transient Map<MobileType, Integer> cartItems;
 
@@ -65,21 +63,21 @@ public class ShoppingCart implements Serializable{
         }
     }
 
-    public void checkout() {
-        LOGGER.log(Level.INFO, "{0}", cartItems.toString());
-        LOGGER.log(Level.INFO, "TOTAL Price: {0}", getTotal());
-    }
-
-    @Override
-    public String toString() {
+    @Remove
+    public String checkout() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("\nTOTAL Price:\n");
+        stringBuilder.append("\nSUMMARY:\n");
         cartItems.entrySet().stream().forEach(entry
                 -> stringBuilder
                 .append(entry.getKey().getManufacturer()).append(" ")
                 .append(entry.getKey().getType()).append(", ID:")
-                .append(entry.getKey().getId())
-        );
+                .append(entry.getKey().getId()).append(", Price:")
+                        .append(entry.getKey().getPrice()).append(", Quantity:")
+                .append(entry.getValue().intValue()));
+
+        stringBuilder.append("\nTOTAL PRICE: ").append(getTotal());
+        
+        clear();
         return stringBuilder.toString();
     }
 }
