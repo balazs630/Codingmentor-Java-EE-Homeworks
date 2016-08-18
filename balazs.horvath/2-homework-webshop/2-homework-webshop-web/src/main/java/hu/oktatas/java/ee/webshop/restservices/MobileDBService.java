@@ -40,7 +40,7 @@ public class MobileDBService implements Serializable {
 
     @PUT
     @Path("/remove/{id}")
-    public Boolean remove(Integer quantity, @PathParam("id") String id, @Context HttpServletRequest request) {
+    public Boolean remove(int quantity, @PathParam("id") String id, @Context HttpServletRequest request) {
         VerifyLogin.userLogin(request);
         return mobileDB.reserveMobile(mobileDB.getMobileTypeByID(id), quantity);
     }

@@ -2,7 +2,6 @@ package hu.oktatas.java.ee.webshop.db;
 
 import hu.oktatas.java.ee.webshop.beans.MobileType;
 import hu.oktatas.java.ee.webshop.db.exceptions.MobileNotExistException;
-import java.util.UUID;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -29,9 +28,9 @@ public class MobileDB {
     }
     
     public MobileType addNewMobileType(MobileType mobileType) {
-        String uuid = UUID.randomUUID().toString();
-        mobileType.setId(uuid);
-        reservedMobileDB.put(mobileType, 0);
+        //String uuid = UUID.randomUUID().toString();
+        //mobileType.setId(uuid);
+        reservedMobileDB.put(mobileType, 2);
         return mobileType;
     }
 
