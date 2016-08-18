@@ -19,6 +19,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import javax.ejb.EJB;
+import javax.servlet.http.HttpSession;
 
 @Path("/users")
 @SessionScoped
@@ -31,18 +32,20 @@ public class UserService implements Serializable {
 
     @POST
     public UserDTO add(UserDTO user, @Context HttpServletRequest request) throws UsernameAlreadyTakenException {
-            //VerifyLogin.adminLogin(request);
-        VerifyLogin.userLogin(request);
+        VerifyLogin.adminLogin(request);
         userDB.registrate(user);
         return user;
     }
 
     @DELETE
-    public UserDTO remove(UserDTO user, @Context HttpServletRequest request) {
-            //VerifyLogin.adminLogin(request);
-        VerifyLogin.userLogin(request);
-        userDB.removeUser(user);
-        return user;
+    @Path("/{username}")
+    public String remove(@PathParam("username") String username, @Context HttpServletRequest request) throws UsernameNotExistException {
+        VerifyLogin.adminLogin(request);
+        if (userDB.removeUser(username)) {
+            return username;
+        } else {
+            throw new UsernameNotExistException("no such user to remove");
+        }
     }
 
     @GET
@@ -53,16 +56,16 @@ public class UserService implements Serializable {
 
     @GET
     public Collection<UserDTO> getUsers() {
-        return (Collection<UserDTO>) userDB.getUserDataBase();
+        return userDB.getUserDataBase().values();
     }
 
     @POST
     @Path("/login")
     public UserDTO login(UserDTO loginUser, @Context HttpServletRequest request) throws UsernameNotExistException {
         if (userDB.authenticate(loginUser.getUserName(), loginUser.getPassword())) {
-            userDB.getUser(loginUser.getUserName());
-            request.getSession(false);
-            request.getSession();
+            UserDTO loggedUser = userDB.getUser(loginUser.getUserName());
+            HttpSession session = request.getSession(false);
+            session.setAttribute("user", loggedUser);
             return loginUser;
         }
         throw new UsernameNotExistException("login failed: wrong username or password");

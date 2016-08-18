@@ -31,9 +31,10 @@ public class UserDB {
         }
     }
 
-    public boolean removeUser(UserDTO user) {
-        if (userDataBase.containsValue(user)) {
-            return userDataBase.remove(user.getUserName(), user);
+    public boolean removeUser(String username) {
+        if (userDataBase.containsKey(username)) {
+            userDataBase.remove(username);
+            return true;
         } else {
             return false;
         }

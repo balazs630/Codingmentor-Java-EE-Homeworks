@@ -7,3 +7,10 @@ release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
+nb-configuration.xml
+.DS_Store
+.localized
+Thumbs.db
+._*
+.Spotlight-V100
+.Trashes
