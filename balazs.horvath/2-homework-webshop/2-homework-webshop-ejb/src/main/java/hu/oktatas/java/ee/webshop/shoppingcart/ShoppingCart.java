@@ -36,7 +36,7 @@ public class ShoppingCart implements Serializable {
         if (!cartItems.containsKey(mobil)) {
             throw new MobileNotExistInTheCartException("The requested mobile ID is not in the cart!");
         } else {
-            int mobilesInCart = cartItems.get(mobil);
+            int mobilesInCart = cartItems.getOrDefault(mobil, 0);
             cartItems.put(mobil, mobilesInCart - quantity);
             MOBILE_DB.returnMobile(mobil, quantity);
         }
