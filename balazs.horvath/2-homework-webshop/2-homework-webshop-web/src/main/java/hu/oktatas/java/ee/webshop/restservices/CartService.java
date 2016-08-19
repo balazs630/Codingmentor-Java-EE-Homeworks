@@ -13,13 +13,14 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
-import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import javax.ejb.EJB;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.core.MediaType;
 
 @Path("/shoppingcart")
 @SessionScoped
-@Produces(APPLICATION_JSON)
-@Consumes(APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public class CartService implements Serializable {
 
     @EJB
@@ -34,8 +35,8 @@ public class CartService implements Serializable {
     }
 
     @DELETE
-    @Path("/remove")
-    public MobileType remove(MobileType type, @Context HttpServletRequest request)
+    @Path("/remove/{type}")
+    public String remove(@PathParam("type") String type, @Context HttpServletRequest request)
             throws MobileNotExistInTheCartException {
         VerifyLogin.userLogin(request);
         cart.removeItem(type, 1);

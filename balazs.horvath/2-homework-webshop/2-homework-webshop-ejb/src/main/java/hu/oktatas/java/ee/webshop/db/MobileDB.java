@@ -17,20 +17,8 @@ public class MobileDB {
         return reservedMobileDB;
     }
 
-    public MobileType getMobileTypeByID(String id){
-    MobileType mobile = null;
-        for (Entry<MobileType, Integer> entry : reservedMobileDB.entrySet()) {
-            if (entry.getKey().getId().equals(id)) {
-                mobile = entry.getKey();
-            }
-        }
-        return mobile;
-    }
-    
     public MobileType addNewMobileType(MobileType mobileType) {
-        //String uuid = UUID.randomUUID().toString();
-        //mobileType.setId(uuid);
-        reservedMobileDB.put(mobileType, 2);
+        reservedMobileDB.put(mobileType, 1);
         return mobileType;
     }
 
@@ -60,19 +48,42 @@ public class MobileDB {
         return true;
     }
 
-    public int count(MobileType mobileType) throws MobileNotExistException {
-        if (reservedMobileDB.containsKey(mobileType)) {
-            return reservedMobileDB.getOrDefault(reservedMobileDB.containsKey(mobileType), 0);
+    public Integer count(String id) {
+        Integer quantity = 0;
+        for (Entry<MobileType, Integer> entry : reservedMobileDB.entrySet()) {
+            if (entry.getKey().getId().equals(id)) {
+                quantity += entry.getValue();
+            }
+        }
+        return quantity;
+    }
+
+    public MobileType getMobileTypeByID(String id) throws MobileNotExistException {
+        MobileType type = null;
+        for (Entry<MobileType, Integer> entry : reservedMobileDB.entrySet()) {
+            if (entry.getKey().getId().equals(id)) {
+                type = entry.getKey();
+            }
+        }
+        if (type == null) {
+            throw new MobileNotExistException("getMobileTypeById failed: mobile not exist");
         } else {
-            throw new MobileNotExistException("count failed: mobile not exist");
+            return type;
         }
     }
 
-    public boolean remove(MobileType mobileType) throws MobileNotExistException {
-        if (reservedMobileDB.containsValue(mobileType)) {
-            return reservedMobileDB.remove(mobileType.getId(), mobileType);
-        } else {
+    public boolean remove(String removeType) throws MobileNotExistException {
+        MobileType type = null;
+        for (Entry<MobileType, Integer> entry : reservedMobileDB.entrySet()) {
+            if (entry.getKey().getType().equals(removeType)) {
+                type = entry.getKey();
+            }
+        }
+        if (type == null) {
             throw new MobileNotExistException("remove failed: mobile not exist");
+        } else {
+            reservedMobileDB.remove(removeType);
+            return true;
         }
     }
 

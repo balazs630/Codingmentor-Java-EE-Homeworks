@@ -32,13 +32,21 @@ public class ShoppingCart implements Serializable {
 
     }
 
-    public void removeItem(MobileType mobil, int quantity) throws MobileNotExistInTheCartException {
-        if (!cartItems.containsKey(mobil)) {
+    public void removeItem(String removeType, int removequantity) throws MobileNotExistInTheCartException {
+        MobileType type = null;
+        Integer cartQuantity = 0;
+        
+        for (Entry<MobileType, Integer> entry : cartItems.entrySet()) {
+            if (entry.getKey().getType().equals(removeType)) {
+                type = entry.getKey();
+                cartQuantity = entry.getValue();
+            }
+        }
+        if (type == null) {
             throw new MobileNotExistInTheCartException("The requested mobile ID is not in the cart!");
         } else {
-            int mobilesInCart = cartItems.getOrDefault(mobil, 0);
-            cartItems.put(mobil, mobilesInCart - quantity);
-            MOBILE_DB.returnMobile(mobil, quantity);
+            cartItems.put(type, cartQuantity - removequantity);
+            MOBILE_DB.returnMobile(type, removequantity);
         }
     }
 
@@ -72,11 +80,11 @@ public class ShoppingCart implements Serializable {
                 .append(entry.getKey().getManufacturer()).append(" ")
                 .append(entry.getKey().getType()).append(", ID:")
                 .append(entry.getKey().getId()).append(", Price:")
-                        .append(entry.getKey().getPrice()).append(", Quantity:")
+                .append(entry.getKey().getPrice()).append(", Quantity:")
                 .append(entry.getValue().intValue()));
 
         stringBuilder.append("\nTOTAL PRICE: ").append(getTotal());
-        
+
         clear();
         return stringBuilder.toString();
     }

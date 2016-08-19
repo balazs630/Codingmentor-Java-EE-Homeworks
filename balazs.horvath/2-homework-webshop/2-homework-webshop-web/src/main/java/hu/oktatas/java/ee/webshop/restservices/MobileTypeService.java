@@ -15,13 +15,14 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
-import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import javax.ejb.EJB;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.core.MediaType;
 
 @Path("/mobiletypes")
 @SessionScoped
-@Produces(APPLICATION_JSON)
-@Consumes(APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public class MobileTypeService implements Serializable {
 
     @EJB
@@ -34,7 +35,8 @@ public class MobileTypeService implements Serializable {
     }
 
     @DELETE
-    public MobileType remove(MobileType type, @Context HttpServletRequest request) throws MobileNotExistException {
+    @Path("/remove/{type}")
+    public String remove(@PathParam("type") String type, @Context HttpServletRequest request) throws MobileNotExistException {
         VerifyLogin.adminLogin(request); 
         if (mobileDB.remove(type)) {
             return type;
