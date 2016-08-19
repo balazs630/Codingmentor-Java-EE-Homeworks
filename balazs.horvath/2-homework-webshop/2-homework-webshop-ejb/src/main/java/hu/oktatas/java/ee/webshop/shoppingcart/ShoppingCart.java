@@ -35,7 +35,7 @@ public class ShoppingCart implements Serializable {
     public void removeItem(String removeType, int removequantity) throws MobileNotExistInTheCartException {
         MobileType type = null;
         Integer cartQuantity = 0;
-        
+
         for (Entry<MobileType, Integer> entry : cartItems.entrySet()) {
             if (entry.getKey().getType().equals(removeType)) {
                 type = entry.getKey();

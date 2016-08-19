@@ -24,23 +24,23 @@ public class MobileDBService implements Serializable {
     @GET
     @Path("/count/{id}")
     public Integer count(@PathParam("id") String id) {
-        return mobileDB.count(id);
+        return mobileDB.countById(id);
     }
-    
+
     @PUT
     @Path("/add/{id}")
-    public Boolean add(@PathParam("id") String id, @QueryParam("quantity") Integer quantity,
-            @Context HttpServletRequest request) throws MobileNotExistException {
+    public Boolean add(@PathParam("id") String id, @Context HttpServletRequest request)
+            throws MobileNotExistException {
         VerifyLogin.userLogin(request);
         MobileType mobile = mobileDB.getMobileTypeByID(id);
-        return mobileDB.reserveMobile(mobile, quantity);
+        return mobileDB.reserveMobile(mobile, 1);
     }
 
     @PUT
     @Path("/remove/{id}")
-    public Boolean remove(@PathParam("id") String id, @QueryParam("quantity") Integer quantity, 
-            @Context HttpServletRequest request) throws MobileNotExistException {
+    public Boolean remove(@PathParam("id") String id, @Context HttpServletRequest request)
+            throws MobileNotExistException {
         VerifyLogin.userLogin(request);
-        return mobileDB.reserveMobile(mobileDB.getMobileTypeByID(id), quantity);
+        return mobileDB.reserveMobile(mobileDB.getMobileTypeByID(id), 1);
     }
 }

@@ -6,9 +6,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import javax.ejb.Singleton;
+import java.io.Serializable;
 
 @Singleton
-public class MobileDB {
+public class MobileDB implements Serializable {
 
     public static final MobileDB INSTANCE = new MobileDB();
     private final Map<MobileType, Integer> reservedMobileDB = new HashMap<>();
@@ -48,7 +49,7 @@ public class MobileDB {
         return true;
     }
 
-    public Integer count(String id) {
+    public Integer countById(String id) {
         Integer quantity = 0;
         for (Entry<MobileType, Integer> entry : reservedMobileDB.entrySet()) {
             if (entry.getKey().getId().equals(id)) {
