@@ -16,7 +16,7 @@ import javax.validation.ValidationException;
 @BeanValidation
 public class ValidatorInterceptor {
 
-    @Inject @DefaultQualifier
+    @Inject @ValidatorQualifier
     private Validator validator;
 
     @AroundInvoke

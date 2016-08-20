@@ -4,11 +4,11 @@ import javax.enterprise.inject.Produces;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-import hu.oktatas.java.ee.webshop.interceptor.DefaultQualifier;
+import hu.oktatas.java.ee.webshop.interceptor.ValidatorQualifier;
 
 public class ValidatorProducer {
 
-    @Produces @DefaultQualifier
+    @Produces @ValidatorQualifier
     public Validator produceLogger() {
         ValidatorFactory vf = Validation.buildDefaultValidatorFactory();
         return vf.getValidator();

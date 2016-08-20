@@ -9,5 +9,5 @@ import javax.inject.Qualifier;
 @Qualifier
 @Target({ElementType.METHOD, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface DefaultQualifier {
+public @interface ValidatorQualifier {
 }
