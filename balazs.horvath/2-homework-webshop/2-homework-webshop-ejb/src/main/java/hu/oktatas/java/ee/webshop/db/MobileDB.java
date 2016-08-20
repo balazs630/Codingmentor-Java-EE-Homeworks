@@ -87,7 +87,7 @@ public class MobileDB implements Serializable {
         if (type == null) {
             throw new MobileNotExistException("remove failed: mobile not exist");
         } else {
-            reservedMobileDB.remove(removeType);
+            reservedMobileDB.remove(type);
             return true;
         }
     }

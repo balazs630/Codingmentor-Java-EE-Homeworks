@@ -1,6 +1,5 @@
 package hu.oktatas.java.ee.webshop.restservices;
 
-import hu.oktatas.java.ee.webshop.beans.MobileType;
 import hu.oktatas.java.ee.webshop.db.MobileDB;
 import hu.oktatas.java.ee.webshop.db.exceptions.MobileNotExistException;
 import hu.oktatas.java.ee.webshop.util.VerifyLogin;
@@ -10,12 +9,9 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
 
 @Path("/inventory")
 @SessionScoped
-@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
 public class MobileDBService implements Serializable {
 
     @Inject
@@ -26,24 +22,28 @@ public class MobileDBService implements Serializable {
 
     @GET
     @Path("/count/{id}")
-    public Integer count(@PathParam("id") String id) {
-        return mobileDB.countById(id);
+    public String count(@PathParam("id") String id) {
+        String result = "\n" + mobileDB.countById(id) + " mobile(s) found with id: " + id;
+        return result;
     }
 
     @PUT
     @Path("/add/{id}")
-    public Boolean add(@PathParam("id") String id, @Context HttpServletRequest request)
+    public String add(@PathParam("id") String id, @Context HttpServletRequest request)
             throws MobileNotExistException {
         VerifyLogin.userLogin(request);
-        MobileType mobile = mobileDB.getMobileTypeByID(id);
-        return mobileDB.reserveMobile(mobile, 1);
+        mobileDB.reserveMobile(mobileDB.getMobileTypeByID(id), 1);
+        String result = "\nTralala\n";
+        return result;
     }
 
     @PUT
     @Path("/remove/{id}")
-    public Boolean remove(@PathParam("id") String id, @Context HttpServletRequest request)
+    public String remove(@PathParam("id") String id, @Context HttpServletRequest request)
             throws MobileNotExistException {
         VerifyLogin.userLogin(request);
-        return mobileDB.reserveMobile(mobileDB.getMobileTypeByID(id), 1);
+        mobileDB.reserveMobile(mobileDB.getMobileTypeByID(id), 1);
+        String result = "\nTralala\n";
+        return result;
     }
 }
