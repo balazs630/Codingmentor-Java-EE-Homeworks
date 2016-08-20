@@ -9,7 +9,7 @@ import hu.oktatas.java.ee.webshop.interceptor.ValidatorQualifier;
 public class ValidatorProducer {
 
     @Produces @ValidatorQualifier
-    public Validator produceLogger() {
+    public Validator produceValidator() {
         ValidatorFactory vf = Validation.buildDefaultValidatorFactory();
         return vf.getValidator();
     }
