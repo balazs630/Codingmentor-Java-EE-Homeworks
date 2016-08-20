@@ -18,13 +18,13 @@ public class MobileDBService implements Serializable {
     private MobileDB mobileDB;
 
     public MobileDBService() {
+        //Default constructor
     }
 
     @GET
     @Path("/count/{id}")
     public String count(@PathParam("id") String id) {
-        String result = "\n" + mobileDB.countById(id) + " mobile(s) found with id: " + id;
-        return result;
+        return "\n" + mobileDB.countById(id) + " mobile(s) found with id: " + id;
     }
 
     @PUT
@@ -33,8 +33,7 @@ public class MobileDBService implements Serializable {
             throws MobileNotExistException {
         VerifyLogin.userLogin(request);
         mobileDB.reserveMobile(mobileDB.getMobileTypeByID(id), 1);
-        String result = "\nTralala\n";
-        return result;
+        return "Incremented mobile stock amount by 1 for id: " + id;
     }
 
     @PUT
@@ -43,7 +42,6 @@ public class MobileDBService implements Serializable {
             throws MobileNotExistException {
         VerifyLogin.userLogin(request);
         mobileDB.reserveMobile(mobileDB.getMobileTypeByID(id), 1);
-        String result = "\nTralala\n";
-        return result;
+        return "Decremented mobile stock amount by 1 for id: " + id;
     }
 }

@@ -13,7 +13,7 @@ import java.io.Serializable;
 public class MobileDB implements Serializable {
 
     public static final MobileDB INSTANCE = new MobileDB();
-    private final Map<MobileType, Integer> reservedMobileDB = new HashMap<>();
+    private final transient Map<MobileType, Integer> reservedMobileDB = new HashMap<>();
 
     public Map<MobileType, Integer> getReservedMobileDB() {
         return reservedMobileDB;
