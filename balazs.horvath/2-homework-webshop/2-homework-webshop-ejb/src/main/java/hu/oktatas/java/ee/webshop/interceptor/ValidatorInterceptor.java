@@ -3,21 +3,20 @@ package hu.oktatas.java.ee.webshop.interceptor;
 import java.util.Arrays;
 import java.util.Optional;
 import java.util.Set;
-import javax.inject.Inject;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 import hu.oktatas.java.ee.webshop.annotations.Validate;
+import javax.inject.Inject;
 import javax.validation.ValidationException;
 
 @Interceptor
 @BeanValidation
 public class ValidatorInterceptor {
 
-    @Inject
-    @DefaultValidator
+    @Inject @DefaultQualifier
     private Validator validator;
 
     @AroundInvoke
