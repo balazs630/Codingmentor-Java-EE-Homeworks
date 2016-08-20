@@ -2,6 +2,7 @@ package hu.oktatas.java.ee.webshop.db;
 
 import hu.oktatas.java.ee.webshop.beans.MobileType;
 import hu.oktatas.java.ee.webshop.db.exceptions.MobileNotExistException;
+import hu.oktatas.java.ee.webshop.interceptor.BeanValidation;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -23,6 +24,7 @@ public class MobileDB implements Serializable {
         return mobileType;
     }
 
+    @BeanValidation
     public boolean reserveMobile(MobileType mobileType, int reqestedQuantity) {
         if (reservedMobileDB.get(mobileType) == null) {
             return false;
@@ -38,6 +40,7 @@ public class MobileDB implements Serializable {
         return false;
     }
 
+    @BeanValidation
     public boolean returnMobile(MobileType mobileType, int quantity) {
         int stockQuantity;
         if (reservedMobileDB.containsKey(mobileType)) {
@@ -73,6 +76,7 @@ public class MobileDB implements Serializable {
         }
     }
 
+    @BeanValidation
     public boolean remove(String removeType) throws MobileNotExistException {
         MobileType type = null;
         for (Entry<MobileType, Integer> entry : reservedMobileDB.entrySet()) {

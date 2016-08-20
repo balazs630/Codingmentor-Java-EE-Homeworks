@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 import javax.interceptor.InterceptorBinding;
 
 @InterceptorBinding
-@Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.METHOD, ElementType.TYPE})
 public @interface BeanValidation {
 }

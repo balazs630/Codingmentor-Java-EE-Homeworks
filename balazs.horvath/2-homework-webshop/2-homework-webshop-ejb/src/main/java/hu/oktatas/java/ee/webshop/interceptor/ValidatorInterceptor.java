@@ -17,6 +17,7 @@ import javax.validation.ValidationException;
 public class ValidatorInterceptor {
 
     @Inject
+    @DefaultValidator
     private Validator validator;
 
     @AroundInvoke

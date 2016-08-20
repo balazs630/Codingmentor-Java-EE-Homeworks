@@ -5,8 +5,8 @@ import hu.oktatas.java.ee.webshop.db.MobileDB;
 import hu.oktatas.java.ee.webshop.db.exceptions.MobileNotExistException;
 import hu.oktatas.java.ee.webshop.util.VerifyLogin;
 import java.io.Serializable;
-import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
@@ -18,8 +18,8 @@ import javax.ws.rs.core.MediaType;
 @Consumes(MediaType.APPLICATION_JSON)
 public class MobileDBService implements Serializable {
 
-    @EJB
-    private transient MobileDB mobileDB;
+    @Inject
+    private MobileDB mobileDB;
 
     @GET
     @Path("/count/{id}")
