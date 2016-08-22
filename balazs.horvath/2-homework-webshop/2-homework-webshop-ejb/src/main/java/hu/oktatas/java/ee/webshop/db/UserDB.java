@@ -7,13 +7,13 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.Calendar;
 import javax.ejb.Singleton;
+import java.io.Serializable;
 
 @Singleton
-public class UserDB {
+public class UserDB implements Serializable {
 
     private final Map<String, UserDTO> userDataBase = new HashMap<>();
     private final Calendar regTime = Calendar.getInstance();
-    public static final UserDB INSTANCE = new UserDB();
 
     public Map<String, UserDTO> getUserDataBase() {
         return userDataBase;

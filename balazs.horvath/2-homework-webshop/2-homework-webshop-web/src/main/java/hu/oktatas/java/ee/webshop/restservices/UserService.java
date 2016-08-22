@@ -49,7 +49,7 @@ public class UserService implements Serializable {
     }
 
     @GET
-    @Path("/id/{id}")
+    @Path("/{id}")
     public UserDTO getUserById(@PathParam("id") String id) throws UsernameNotExistException {
         return userDB.getUser(id);
     }

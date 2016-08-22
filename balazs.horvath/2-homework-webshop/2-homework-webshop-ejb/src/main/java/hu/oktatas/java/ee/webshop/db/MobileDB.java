@@ -12,7 +12,6 @@ import java.io.Serializable;
 @Singleton
 public class MobileDB implements Serializable {
 
-    public static final MobileDB INSTANCE = new MobileDB();
     private final transient Map<MobileType, Integer> reservedMobileDB = new HashMap<>();
 
     public Map<MobileType, Integer> getReservedMobileDB() {

@@ -10,7 +10,7 @@ import org.junit.Test;
 
 public class UserDBTest {
 
-    private static final UserDB USERDB = UserDB.INSTANCE;
+    private UserDB userDB;
     private final Calendar regTime = Calendar.getInstance();
     private UserDTO user, user2;
 
@@ -24,30 +24,30 @@ public class UserDBTest {
     public void registrateTestTrue() throws UsernameAlreadyTakenException, UsernameNotExistException {
         String username = "newusername";
         user.setUserName(username);
-        USERDB.registrate(user);
-        Assert.assertEquals(USERDB.getUser(username), user);
+        userDB.registrate(user);
+        Assert.assertEquals(userDB.getUser(username), user);
     }
 
     @Test(expected = UsernameAlreadyTakenException.class)
     public void registrateTestFalse() throws UsernameAlreadyTakenException {
         UserDTO newUser = new UserDTO("testuser", "Passs1234", "user@domain.com", regTime);
-        USERDB.registrate(user);
-        USERDB.registrate(newUser);
+        userDB.registrate(user);
+        userDB.registrate(newUser);
         Assert.assertEquals(null, newUser);
     }
 
     @Test
     public void getUserTestTrue() throws UsernameNotExistException, UsernameAlreadyTakenException {
         String username = user.getUserName();
-        USERDB.registrate(user);
-        UserDTO returnedUser = USERDB.getUser(username);
+        userDB.registrate(user);
+        UserDTO returnedUser = userDB.getUser(username);
         Assert.assertEquals(username, returnedUser.getUserName());
     }
 
     @Test(expected = UsernameNotExistException.class)
     public void getUserTestFalse() throws UsernameNotExistException {
         String username = "NotExistName";
-        UserDTO returnedUser = USERDB.getUser(username);
+        UserDTO returnedUser = userDB.getUser(username);
         Assert.assertEquals(null, returnedUser);
     }
 
@@ -55,8 +55,8 @@ public class UserDBTest {
     public void authenticateTestTrue() throws UsernameAlreadyTakenException {
         String username = user2.getUserName();
         String password = user2.getPassword();
-        USERDB.registrate(user2);
-        boolean isAuthenticationSuccessful = USERDB.authenticate(username, password);
+        userDB.registrate(user2);
+        boolean isAuthenticationSuccessful = userDB.authenticate(username, password);
         Assert.assertEquals(true, isAuthenticationSuccessful);
     }
 
@@ -64,7 +64,7 @@ public class UserDBTest {
     public void authenticateTestFalse() throws UsernameAlreadyTakenException {
         String username = "MistypedOne";
         String password = user2.getPassword();
-        boolean isAuthenticationSuccessful = USERDB.authenticate(username, password);
+        boolean isAuthenticationSuccessful = userDB.authenticate(username, password);
         Assert.assertEquals(false, isAuthenticationSuccessful);
     }
 }

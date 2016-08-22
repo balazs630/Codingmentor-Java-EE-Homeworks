@@ -6,10 +6,11 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import hu.oktatas.java.ee.webshop.annotations.Validate;
+import java.io.Serializable;
 
 @Validate
 @Manufacturer
-public class MobileType {
+public class MobileType implements Serializable {
 
     @NotNull
     @Size(min = 36, max = 36)

@@ -10,12 +10,15 @@ import javax.ejb.Stateful;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import javax.ejb.Remove;
+import javax.inject.Inject;
 
 @Stateful
 @SessionScoped
 public class ShoppingCart implements Serializable {
 
-    private static final MobileDB MOBILE_DB = MobileDB.INSTANCE;
+    @Inject
+    private MobileDB mobileDB;
+    
     private final transient Map<MobileType, Integer> cartItems;
 
     public ShoppingCart() {
@@ -28,7 +31,7 @@ public class ShoppingCart implements Serializable {
             currentQuantity += cartItems.get(mobil);
         }
         cartItems.put(mobil, currentQuantity + quantity);
-        MOBILE_DB.reserveMobile(mobil, quantity);
+        mobileDB.reserveMobile(mobil, quantity);
 
     }
 
@@ -46,7 +49,7 @@ public class ShoppingCart implements Serializable {
             throw new MobileNotExistInTheCartException("The requested mobile ID is not in the cart!");
         } else {
             cartItems.put(type, cartQuantity - removequantity);
-            MOBILE_DB.returnMobile(type, removequantity);
+            mobileDB.returnMobile(type, removequantity);
         }
     }
 
@@ -54,7 +57,7 @@ public class ShoppingCart implements Serializable {
         for (Entry<MobileType, Integer> entry : cartItems.entrySet()) {
             MobileType type = entry.getKey();
             Integer quantity = entry.getValue();
-            MOBILE_DB.returnMobile(type, quantity);
+            mobileDB.returnMobile(type, quantity);
         }
         cartItems.clear();
     }

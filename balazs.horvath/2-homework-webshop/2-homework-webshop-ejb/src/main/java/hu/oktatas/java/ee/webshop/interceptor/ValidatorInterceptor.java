@@ -16,17 +16,14 @@ import javax.validation.ValidationException;
 @BeanValidation
 public class ValidatorInterceptor {
 
-    @Inject @ValidatorQualifier
+    @Inject
+    @ValidatorQualifier
     private Validator validator;
 
     @AroundInvoke
-    public Object logMethod(InvocationContext ic) {
-        try {
-            validateParameters(ic.getParameters());
-            return ic.proceed();
-        } catch (Exception ex) {
-            throw new ValidationException("Validation error:" + ex);
-        }
+    public Object logMethod(InvocationContext ic) throws Exception {
+        validateParameters(ic.getParameters());
+        return ic.proceed();
     }
 
     private void validateParameters(Object[] parameters) {

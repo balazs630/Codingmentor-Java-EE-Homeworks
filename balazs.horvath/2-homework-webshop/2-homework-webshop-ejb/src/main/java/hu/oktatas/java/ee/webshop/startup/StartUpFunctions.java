@@ -15,15 +15,18 @@ import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.inject.Inject;
+import java.io.Serializable;
 
 @Startup
 @Singleton
-public class StartUpFunctions {
+public class StartUpFunctions implements Serializable {
 
-    private final ObjectMapper mapper = new ObjectMapper();
-    private static final Logger LOGGER = Logger.getLogger(StartUpFunctions.class.getName());
+    private static final ObjectMapper MAPPER = new ObjectMapper();
     private static final String USER_JSON_RESOURCE = "json/users.json";
     private static final String MOBILE_JSON_RESOURCE = "json/mobiles.json";
+
+    @Inject
+    Logger logger;
 
     @Inject
     private UserDB userDB;
@@ -32,7 +35,7 @@ public class StartUpFunctions {
     private MobileDB mobileDB;
 
     private void addUsersFromJson() throws IOException, UsernameAlreadyTakenException {
-        List<UserDTO> users = mapper.readValue(StartUpFunctions.class.getClassLoader()
+        List<UserDTO> users = MAPPER.readValue(StartUpFunctions.class.getClassLoader()
                 .getResource(USER_JSON_RESOURCE),
                 new TypeReference<List<UserDTO>>() {
         });
@@ -43,9 +46,10 @@ public class StartUpFunctions {
     }
 
     private void addMobilesFromJson() throws IOException {
-        List<MobileType> mobiles = mapper.readValue(StartUpFunctions.class.getClassLoader().
+        List<MobileType> mobiles = MAPPER.readValue(StartUpFunctions.class.getClassLoader().
                 getResource(MOBILE_JSON_RESOURCE),
-                new TypeReference<List<MobileType>>(){});
+                new TypeReference<List<MobileType>>() {
+        });
 
         mobiles.stream().forEach(mobile -> mobileDB.addNewMobileType(mobile));
     }
@@ -56,7 +60,7 @@ public class StartUpFunctions {
             addUsersFromJson();
             addMobilesFromJson();
         } catch (IOException | UsernameAlreadyTakenException ex) {
-            LOGGER.log(Level.ALL, "Problem occorred on JSON import: {0}", ex);
+            logger.log(Level.ALL, "Problem occorred on JSON import: {0}", ex);
         }
     }
 }
