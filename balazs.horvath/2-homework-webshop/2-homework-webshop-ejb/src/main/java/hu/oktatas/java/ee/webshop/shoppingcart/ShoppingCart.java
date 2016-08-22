@@ -19,7 +19,7 @@ public class ShoppingCart implements Serializable {
     @Inject
     private MobileDB mobileDB;
     
-    private final transient Map<MobileType, Integer> cartItems;
+    private final Map<MobileType, Integer> cartItems;
 
     public ShoppingCart() {
         this.cartItems = new HashMap<>();

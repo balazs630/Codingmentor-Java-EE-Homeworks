@@ -1,17 +1,22 @@
 package hu.oktatas.java.ee.webshop.exceptionmapper;
 
-public class ErrorDTO extends Throwable {
+public class ErrorDTO {
 
-    public ErrorDTO(String message) {
-        super(message);
+    private String errorMessage;
+
+    public ErrorDTO() {
     }
 
-    public ErrorDTO(Throwable cause) {
-        super(cause);
+    public ErrorDTO(String errorMessage) {
+        this.errorMessage = errorMessage;
     }
 
-    public ErrorDTO(String message, Throwable cause) {
-        super(message, cause);
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
     }
 
 }

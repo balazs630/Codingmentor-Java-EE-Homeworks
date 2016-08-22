@@ -26,7 +26,7 @@ public class StartUpFunctions implements Serializable {
     private static final String MOBILE_JSON_RESOURCE = "json/mobiles.json";
 
     @Inject
-    Logger logger;
+    private Logger logger;
 
     @Inject
     private UserDB userDB;

@@ -24,7 +24,7 @@ import javax.ws.rs.core.MediaType;
 public class CartService implements Serializable {
 
     @EJB
-    private transient ShoppingCart cart;
+    private ShoppingCart cart;
 
     @POST
     @Path("/add")
@@ -35,7 +35,7 @@ public class CartService implements Serializable {
     }
 
     @DELETE
-    @Path("/remove/{type}")
+    @Path("/{type}")
     public String remove(@PathParam("type") String type, @Context HttpServletRequest request)
             throws MobileNotExistInTheCartException {
         VerifyLogin.userLogin(request);

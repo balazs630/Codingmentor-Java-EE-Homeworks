@@ -26,7 +26,7 @@ import javax.ws.rs.core.MediaType;
 public class MobileTypeService implements Serializable {
 
     @EJB
-    private transient MobileDB mobileDB;
+    private MobileDB mobileDB;
 
     @POST
     public MobileType add(MobileType type, @Context HttpServletRequest request) {
@@ -35,7 +35,7 @@ public class MobileTypeService implements Serializable {
     }
 
     @DELETE
-    @Path("/remove/{type}")
+    @Path("/{type}")
     public String remove(@PathParam("type") String type, @Context HttpServletRequest request) throws MobileNotExistException {
         VerifyLogin.adminLogin(request); 
         if (mobileDB.remove(type)) {

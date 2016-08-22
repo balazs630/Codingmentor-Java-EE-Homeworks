@@ -28,7 +28,7 @@ import javax.ws.rs.core.MediaType;
 public class UserService implements Serializable {
 
     @EJB
-    private transient UserDB userDB;
+    private UserDB userDB;
 
     @POST
     public UserDTO add(UserDTO user, @Context HttpServletRequest request) throws UsernameAlreadyTakenException {

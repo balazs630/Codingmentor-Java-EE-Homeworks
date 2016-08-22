@@ -12,7 +12,7 @@ import java.io.Serializable;
 @Singleton
 public class MobileDB implements Serializable {
 
-    private final transient Map<MobileType, Integer> reservedMobileDB = new HashMap<>();
+    private final Map<MobileType, Integer> reservedMobileDB = new HashMap<>();
 
     public Map<MobileType, Integer> getReservedMobileDB() {
         return reservedMobileDB;

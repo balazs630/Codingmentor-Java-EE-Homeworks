@@ -17,10 +17,6 @@ public class MobileDBService implements Serializable {
     @Inject
     private MobileDB mobileDB;
 
-    public MobileDBService() {
-        //Default constructor
-    }
-
     @GET
     @Path("/count/{id}")
     public String count(@PathParam("id") String id) {
