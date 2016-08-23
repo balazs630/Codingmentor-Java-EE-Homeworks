@@ -16,6 +16,7 @@ public class UserDBTest {
 
     @Before
     public void setUpClass() {
+        userDB = new UserDB();
         user = new UserDTO("testuser", "Passs1234", "user@domain.com", regTime);
         user2 = new UserDTO("testuser2", "Passs1234", "user@domain.com", regTime);
     }

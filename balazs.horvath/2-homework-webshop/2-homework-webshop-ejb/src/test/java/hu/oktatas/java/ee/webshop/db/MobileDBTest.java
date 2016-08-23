@@ -16,6 +16,7 @@ public class MobileDBTest {
 
     @Before
     public void setUpClass() {
+        mobileDB = new MobileDB();
         String id = UUID.randomUUID().toString();
         mobile = new MobileType(id, ManufacturerType.APPLE, "Iphone4", 50, Currency.GBP, Color.BLACK);
     }

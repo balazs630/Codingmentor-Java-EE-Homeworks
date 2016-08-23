@@ -36,7 +36,8 @@ public class MobileTypeService implements Serializable {
 
     @DELETE
     @Path("/{type}")
-    public String remove(@PathParam("type") String type, @Context HttpServletRequest request) throws MobileNotExistException {
+    public String remove(@PathParam("type") String type, @Context HttpServletRequest request) 
+            throws MobileNotExistException {
         VerifyLogin.adminLogin(request); 
         if (mobileDB.remove(type)) {
             return type;

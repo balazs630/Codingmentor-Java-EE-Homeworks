@@ -31,7 +31,8 @@ public class UserService implements Serializable {
     private UserDB userDB;
 
     @POST
-    public UserDTO add(UserDTO user, @Context HttpServletRequest request) throws UsernameAlreadyTakenException {
+    public UserDTO add(UserDTO user, @Context HttpServletRequest request) 
+            throws UsernameAlreadyTakenException {
         VerifyLogin.adminLogin(request);
         userDB.registrate(user);
         return user;
@@ -39,7 +40,8 @@ public class UserService implements Serializable {
 
     @DELETE
     @Path("/{username}")
-    public String remove(@PathParam("username") String username, @Context HttpServletRequest request) throws UsernameNotExistException {
+    public String remove(@PathParam("username") String username, @Context HttpServletRequest request) 
+            throws UsernameNotExistException {
         VerifyLogin.adminLogin(request);
         if (userDB.removeUser(username)) {
             return username;
@@ -61,7 +63,8 @@ public class UserService implements Serializable {
 
     @POST
     @Path("/login")
-    public UserDTO login(UserDTO loginUser, @Context HttpServletRequest request) throws UsernameNotExistException {
+    public UserDTO login(UserDTO loginUser, @Context HttpServletRequest request) 
+            throws UsernameNotExistException {
         if (userDB.authenticate(loginUser.getUserName(), loginUser.getPassword())) {
             UserDTO loggedUser = userDB.getUser(loginUser.getUserName());
             HttpSession session = request.getSession(false);
