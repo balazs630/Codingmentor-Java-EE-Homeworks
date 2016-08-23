@@ -13,7 +13,6 @@ import java.io.Serializable;
 public class UserDB implements Serializable {
 
     private final Map<String, UserDTO> userDataBase = new HashMap<>();
-    private final Calendar regTime = Calendar.getInstance();
 
     public Map<String, UserDTO> getUserDataBase() {
         return userDataBase;
@@ -25,7 +24,7 @@ public class UserDB implements Serializable {
                     "Username is Already Taken, Choose Another One!");
         } else {
             String userName = user.getUserName();
-            user.setRegistrationDate(regTime);
+            user.setRegistrationDate(Calendar.getInstance());
             userDataBase.put(userName, user);
             return user;
         }

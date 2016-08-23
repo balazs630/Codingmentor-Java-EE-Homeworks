@@ -24,6 +24,7 @@ public class ApplicationConfig extends Application {
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(hu.oktatas.java.ee.webshop.exceptionmapper.GeneralExceptionMapper.class);
+        resources.add(hu.oktatas.java.ee.webshop.exceptionmapper.UsernameNotExistExceptionMapper.class);
         resources.add(hu.oktatas.java.ee.webshop.restservices.CartService.class);
         resources.add(hu.oktatas.java.ee.webshop.restservices.MobileDBService.class);
         resources.add(hu.oktatas.java.ee.webshop.restservices.MobileTypeService.class);
