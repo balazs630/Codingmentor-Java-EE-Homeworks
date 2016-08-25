@@ -1,7 +1,7 @@
-package hu.oktatas.java.ee.dao.amusementpark;
+package hu.oktatas.java.ee.amusementpark;
 
-import hu.oktatas.java.ee.dao.visitor.Visitor;
-import hu.oktatas.java.ee.dao.visitor.Address;
+import hu.oktatas.java.ee.visitor.Visitor;
+import hu.oktatas.java.ee.visitor.Address;
 import hu.oktatas.java.ee.guestbook.GuestBook;
 import hu.oktatas.java.ee.exceptions.MachineNotAffordableException;
 import hu.oktatas.java.ee.exceptions.ParkIsFullException;

@@ -36,5 +36,4 @@ public abstract class AbstractDao<T extends Serializable> implements Dao<T> {
         entityManager.remove(entity);
         return entity;
     }
-    
 }

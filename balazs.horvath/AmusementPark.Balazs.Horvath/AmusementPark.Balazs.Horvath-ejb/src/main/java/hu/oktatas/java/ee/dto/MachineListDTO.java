@@ -1,6 +1,6 @@
 package hu.oktatas.java.ee.dto;
 
-import hu.oktatas.java.ee.dao.amusementpark.Machine;
+import hu.oktatas.java.ee.amusementpark.Machine;
 import java.util.List;
 
 public class MachineListDTO {

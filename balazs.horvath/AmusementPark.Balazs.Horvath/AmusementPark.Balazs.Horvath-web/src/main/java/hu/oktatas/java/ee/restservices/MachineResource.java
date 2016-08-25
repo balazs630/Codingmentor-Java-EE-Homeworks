@@ -1,7 +1,7 @@
 package hu.oktatas.java.ee.restservices;
 
-import hu.oktatas.java.ee.dao.amusementpark.AmusementPark;
-import hu.oktatas.java.ee.dao.amusementpark.Machine;
+import hu.oktatas.java.ee.amusementpark.AmusementPark;
+import hu.oktatas.java.ee.amusementpark.Machine;
 import hu.oktatas.java.ee.dao.AmusementParkDao;
 import hu.oktatas.java.ee.dao.MachineDao;
 import hu.oktatas.java.ee.dto.VisitorListDTO;

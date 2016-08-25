@@ -1,7 +1,7 @@
-package hu.oktatas.java.ee.dao.visitor;
+package hu.oktatas.java.ee.visitor;
 
-import hu.oktatas.java.ee.dao.amusementpark.AmusementPark;
-import hu.oktatas.java.ee.dao.amusementpark.Machine;
+import hu.oktatas.java.ee.amusementpark.AmusementPark;
+import hu.oktatas.java.ee.amusementpark.Machine;
 import hu.oktatas.java.ee.guestbook.Opinion;
 import hu.oktatas.java.ee.exceptions.ParkIsFullException;
 import hu.oktatas.java.ee.exceptions.VisitorAgeLimitException;
@@ -21,9 +21,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import static javax.persistence.TemporalType.DATE;
 import javax.validation.constraints.NotNull;
-import static hu.oktatas.java.ee.dao.visitor.VisitorStateEnum.NOT_ENTERED;
-import static hu.oktatas.java.ee.dao.visitor.VisitorStateEnum.INACTIVE;
-import static hu.oktatas.java.ee.dao.visitor.VisitorStateEnum.ACTIVE;
+import static hu.oktatas.java.ee.visitor.VisitorStateEnum.NOT_ENTERED;
+import static hu.oktatas.java.ee.visitor.VisitorStateEnum.INACTIVE;
+import static hu.oktatas.java.ee.visitor.VisitorStateEnum.ACTIVE;
 
 @Entity
 public class Visitor implements Serializable {

@@ -1,6 +1,6 @@
 package hu.oktatas.java.ee.dto;
 
-import hu.oktatas.java.ee.dao.amusementpark.AmusementPark;
+import hu.oktatas.java.ee.amusementpark.AmusementPark;
 import java.util.List;
 
 public class AmusementParkListDTO {

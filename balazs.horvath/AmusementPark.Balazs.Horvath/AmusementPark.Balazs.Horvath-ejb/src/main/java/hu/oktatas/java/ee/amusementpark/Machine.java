@@ -1,6 +1,6 @@
-package hu.oktatas.java.ee.dao.amusementpark;
+package hu.oktatas.java.ee.amusementpark;
 
-import hu.oktatas.java.ee.dao.visitor.Visitor;
+import hu.oktatas.java.ee.visitor.Visitor;
 import hu.oktatas.java.ee.exceptions.VisitorAgeLimitException;
 import java.io.Serializable;
 import java.util.ArrayList;

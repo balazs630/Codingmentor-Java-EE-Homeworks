@@ -1,6 +1,6 @@
 package hu.oktatas.java.ee.dao;
 
-import hu.oktatas.java.ee.dao.amusementpark.Machine;
+import hu.oktatas.java.ee.amusementpark.Machine;
 import hu.oktatas.java.ee.dto.VisitorListDTO;
 import javax.ejb.Stateless;
 
@@ -14,5 +14,4 @@ public class MachineDao extends AbstractDao<Machine> {
     public VisitorListDTO findRiders(Long machineId) {
         return new VisitorListDTO(find(machineId).getPeople());
     }
-    
 }

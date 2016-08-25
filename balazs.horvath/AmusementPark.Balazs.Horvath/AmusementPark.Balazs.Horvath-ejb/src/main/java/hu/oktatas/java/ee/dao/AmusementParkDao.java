@@ -1,10 +1,10 @@
 package hu.oktatas.java.ee.dao;
 
-import hu.oktatas.java.ee.dao.amusementpark.AmusementPark;
+import hu.oktatas.java.ee.amusementpark.AmusementPark;
 import hu.oktatas.java.ee.dto.MachineListDTO;
 import hu.oktatas.java.ee.dto.VisitorListDTO;
 import javax.ejb.Stateless;
-import static hu.oktatas.java.ee.dao.visitor.VisitorStateEnum.INACTIVE;
+import static hu.oktatas.java.ee.visitor.VisitorStateEnum.INACTIVE;
 
 @Stateless
 public class AmusementParkDao extends AbstractDao<AmusementPark> {
@@ -35,6 +35,5 @@ public class AmusementParkDao extends AbstractDao<AmusementPark> {
                 .setParameter("parkId", parkId)
                 .setParameter("active", false)
                 .getSingleResult();
-    }
-    
+    } 
 }

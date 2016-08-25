@@ -19,6 +19,5 @@ public class ReportDao extends AbstractDao<Opinion> {
                 .setParameter("parkId", parkId)
                 .getResultList();
         return new ReportListDTO(reports);
-    }
-    
+    } 
 }

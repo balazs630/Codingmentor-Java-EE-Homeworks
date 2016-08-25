@@ -1,4 +1,4 @@
-package hu.oktatas.java.ee.dao.visitor;
+package hu.oktatas.java.ee.visitor;
 
 import java.io.Serializable;
 import java.util.Objects;

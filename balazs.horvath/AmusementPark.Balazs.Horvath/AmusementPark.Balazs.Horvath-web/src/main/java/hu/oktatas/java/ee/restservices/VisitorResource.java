@@ -1,10 +1,10 @@
 package hu.oktatas.java.ee.restservices;
 
-import hu.oktatas.java.ee.dao.amusementpark.AmusementPark;
+import hu.oktatas.java.ee.amusementpark.AmusementPark;
 import hu.oktatas.java.ee.guestbook.GuestBook;
-import hu.oktatas.java.ee.dao.amusementpark.Machine;
+import hu.oktatas.java.ee.amusementpark.Machine;
 import hu.oktatas.java.ee.guestbook.Opinion;
-import hu.oktatas.java.ee.dao.visitor.Visitor;
+import hu.oktatas.java.ee.visitor.Visitor;
 import hu.oktatas.java.ee.dao.AmusementParkDao;
 import hu.oktatas.java.ee.dao.GuestBookDao;
 import hu.oktatas.java.ee.dao.MachineDao;

@@ -8,6 +8,5 @@ public class GuestBookDao extends AbstractDao<GuestBook> {
     
     public GuestBookDao() {
         super(GuestBook.class);
-    }
-    
+    } 
 }

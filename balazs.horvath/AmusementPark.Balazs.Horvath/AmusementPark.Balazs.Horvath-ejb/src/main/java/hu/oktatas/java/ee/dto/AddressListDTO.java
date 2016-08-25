@@ -1,6 +1,6 @@
 package hu.oktatas.java.ee.dto;
 
-import hu.oktatas.java.ee.dao.visitor.Address;
+import hu.oktatas.java.ee.visitor.Address;
 import java.util.List;
 
 public class AddressListDTO {
