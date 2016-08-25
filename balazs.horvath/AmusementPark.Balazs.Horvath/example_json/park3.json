@@ -1,0 +1,14 @@
+{
+    "id": 3,
+    "name": "park3",
+    "address": {
+        "country": "HU",
+		"zip": "9028",
+        "city": "Győr",
+        "street": "Fő tér",
+        "houseNumber": "3"
+    },
+    "fund": 123132132,
+    "spaceRequired": 12312,
+    "entranceFee": 1200
+}

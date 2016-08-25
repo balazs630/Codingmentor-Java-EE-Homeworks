@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "name": "park2",
+    "address": {
+        "country": "HU",
+		"zip": "4026",
+        "city": "Debrecen",
+        "street": "Fő tér",
+        "houseNumber": "2"
+    },
+    "fund": 123132132,
+    "spaceRequired": 12312,
+    "entranceFee": 1000
+}

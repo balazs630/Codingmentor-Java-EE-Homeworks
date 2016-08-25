@@ -1,0 +1,12 @@
+{
+    "id": 2,
+    "name": "machine2",
+    "machinePrice": 1232132,
+    "spaceRequired": 2000,
+    "type": "GHOST_TRAIN",
+    "income": 0,
+    "ticketPrice": 300,
+    "ageLimit": 18,
+    "maxPeopleUsing": 50,
+    "active": false
+}

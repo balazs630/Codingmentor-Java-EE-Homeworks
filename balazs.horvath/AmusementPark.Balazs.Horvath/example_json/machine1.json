@@ -1,0 +1,12 @@
+{
+    "id": 1,
+    "name": "machine1",
+    "machinePrice": 123112,
+    "spaceRequired": 500,
+    "type": "FERRIS_WHEEL",
+    "income": 0,
+    "ticketPrice": 500,
+    "ageLimit": 12,
+    "maxPeopleUsing": 200,
+    "active": false
+}

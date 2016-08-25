@@ -1,0 +1,14 @@
+{
+    "id": 1,
+    "name": "park1",
+    "address": {
+        "country": "HU",
+		"zip": "1066",
+        "city": "Budapest",
+        "street": "Nyugati tér",
+        "houseNumber": "1"
+    },
+    "fund": 123132132,
+    "spaceRequired": 12312,
+    "entranceFee": 800
+}

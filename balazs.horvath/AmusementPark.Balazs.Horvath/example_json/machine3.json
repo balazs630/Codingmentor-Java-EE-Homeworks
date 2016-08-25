@@ -1,0 +1,12 @@
+{
+    "id": 3,
+    "name": "machine3",
+    "machinePrice": 1132,
+    "spaceRequired": 300,
+    "type": "DODGEM",
+    "income": 0,
+    "ticketPrice": 400,
+    "ageLimit": 8,
+    "maxPeopleUsing": 20,
+    "active": false
+}
