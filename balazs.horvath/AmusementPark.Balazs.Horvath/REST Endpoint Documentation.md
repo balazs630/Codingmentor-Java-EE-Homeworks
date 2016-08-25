@@ -5,6 +5,7 @@ AmusementPark Documentation: REST endpoints
 AmusementParkResource.java
 ---------------------------
 
+
 @GET
 
 /AmusementPark.Balazs.Horvath-web/webresources/park/{id}
@@ -18,9 +19,11 @@ AmusementParkResource.java
 /AmusementPark.Balazs.Horvath-web/webresources/park/{id}/inactiveMachines
 
 
+
 @POST
 
 /AmusementPark.Balazs.Horvath-web/webresources/park
+
 
 
 @PUT
@@ -30,6 +33,7 @@ AmusementParkResource.java
 /AmusementPark.Balazs.Horvath-web/webresources/park/{id}/purchase/{machineId}
 
 /AmusementPark.Balazs.Horvath-web/webresources/park/{id}/sell/{machineId}
+
 
 
 @DELETE
@@ -43,6 +47,7 @@ AmusementParkResource.java
 MachineResource.java
 ---------------------
 
+
 @GET
 
 /AmusementPark.Balazs.Horvath-web/webresources/machine/{id}
@@ -50,9 +55,11 @@ MachineResource.java
 /AmusementPark.Balazs.Horvath-web/webresources/machine/{id}/people
 
 
+
 @POST
 
 /AmusementPark.Balazs.Horvath-web/webresources/machine
+
 
 
 @PUT
@@ -66,6 +73,7 @@ MachineResource.java
 /AmusementPark.Balazs.Horvath-web/webresources/machine/{id}/income
 
 
+
 @DELETE
 
 /AmusementPark.Balazs.Horvath-web/webresources/machine/{id}
@@ -77,6 +85,7 @@ MachineResource.java
 VisitorResource.java
 ---------------------
 
+
 @GET
 
 /AmusementPark.Balazs.Horvath-web/webresources/visitor/{id}
@@ -84,11 +93,13 @@ VisitorResource.java
 /AmusementPark.Balazs.Horvath-web/webresources/visitor/{id}/reports
 
 
+
 @POST
 
 /AmusementPark.Balazs.Horvath-web/webresources/visitor
 
 /AmusementPark.Balazs.Horvath-web/webresources/visitor/{id}/writeOpinion
+
 
 
 @PUT
@@ -102,6 +113,7 @@ VisitorResource.java
 /AmusementPark.Balazs.Horvath-web/webresources/visitor/{id}/try/{machineId}
 
 /AmusementPark.Balazs.Horvath-web/webresources/visitor/{id}/getOff/{machineId}
+
 
 
 @DELETE
